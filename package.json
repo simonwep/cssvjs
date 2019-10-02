@@ -2,13 +2,11 @@
     "name": "@simonwep/parse-gradient",
     "version": "0.0.0",
     "description": "",
-    "main": "./src/parser.js",
+    "main": "src/index.js",
     "keywords": [],
     "author": "Simon Reinisch <trash@reinisch.io>",
     "license": "MIT",
     "scripts": {
-        "start": "node ./src/parser.js",
-        "dev": "nodemon ./src/parser.js",
         "lint": "eslint ./src --fix",
         "test": "mocha test/**/*.test.js",
         "dev:test": "mocha test/**/*.test.js --watch --watch-extensions js"
