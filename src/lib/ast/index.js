@@ -1,7 +1,8 @@
 const createStream = require('../stream');
-const {sideOrCorner, position, angle, length, time, percentage} = require('./css');
+const {sideOrCorner, position, angle, length, string, time, percentage} = require('./css');
 
 const types = [
+    string,
     sideOrCorner,
     percentage,
     length,

@@ -1,5 +1,5 @@
 const {isNonWhitespace} = require('../tools/is');
-const consume = require('../tools/consume');
+const consume = require('../tools/consumeWhile');
 
 module.exports = stream => {
     const str = consume(stream, isNonWhitespace);

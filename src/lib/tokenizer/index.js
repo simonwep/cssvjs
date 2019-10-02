@@ -1,8 +1,9 @@
 const {isWhiteSpace} = require('./tools/is');
-const consume = require('./tools/consume');
+const consume = require('./tools/consumeWhile');
 const createStream = require('../stream');
 
 const parser = [
+    require('./types/str'),
     require('./types/num'),
     require('./types/kw'),
     require('./types/punc')
