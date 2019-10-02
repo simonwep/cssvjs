@@ -1,5 +1,5 @@
-const parse = require('../../src');
 const {expect} = require('chai');
+const parse = require('../../src');
 
 describe('CSS Type: <position>', () => {
 

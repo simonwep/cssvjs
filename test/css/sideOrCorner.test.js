@@ -1,9 +1,9 @@
-const parse = require('../../src');
 const {expect} = require('chai');
+const parse = require('../../src');
 
 describe('CSS Type: <side-or-corner>', () => {
 
-    it('should parse a side: "to left"', () => {
+    it('Should parse a side: "to left"', () => {
         expect(parse('to left')).to.deep.equal({
             type: 'side',
             value: [
@@ -13,7 +13,7 @@ describe('CSS Type: <side-or-corner>', () => {
         });
     });
 
-    it('should parse a corner: "to bottom left"', () => {
+    it('Should parse a corner: "to bottom left"', () => {
         expect(parse('to bottom left')).to.deep.equal({
             type: 'corner',
             value: [
@@ -24,7 +24,7 @@ describe('CSS Type: <side-or-corner>', () => {
         });
     });
 
-    it('should return null on opposite values: "to left right"', () => {
+    it('Should return null on opposite values: "to left right"', () => {
         expect(parse('to left right')).to.equal(null);
     });
 });

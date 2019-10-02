@@ -1,8 +1,8 @@
 const {expect} = require('chai');
 const parse = require('../../src');
 
-describe('CSS Type: <length>', () => {
-    const units = ['cap', 'ch', 'em', 'ex', 'ic', 'lh', 'rem', 'rlh', 'vh', 'vw', 'vi', 'vb', 'vmin', 'vmax', 'px', 'cm', 'mm', 'Q', 'in', 'pc', 'pt', 'mozmm'];
+describe('CSS Type: <time>', () => {
+    const units = ['s', 'ms'];
 
     for (const unit of units) {
         const num = Number((Math.random() * 1e5).toFixed(3));
@@ -10,7 +10,7 @@ describe('CSS Type: <length>', () => {
 
         it(`Should parse ${str}`, () => {
             expect(parse(str)).to.deep.equal({
-                type: 'length',
+                type: 'time',
                 value: num,
                 unit
             });

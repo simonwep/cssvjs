@@ -3,13 +3,13 @@ const percentage = require('./percentage');
 const position = require('./position');
 const length = require('./length');
 const angle = require('./angle');
+const time = require('./time');
 
-const types = {
+module.exports = {
     sideOrCorner,
     percentage,
     position,
     length,
-    angle
+    angle,
+    time
 };
-
-module.exports = types;

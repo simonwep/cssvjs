@@ -1,5 +1,5 @@
-const tokenizer = require('../../src/lib/tokenizer');
 const {expect} = require('chai');
+const tokenizer = require('../../src/lib/tokenizer');
 
 describe('Tokenizer', () => {
     const testStr = '   foo{ .35} -3, baz,-27.4ba_m  "(3.3\'';
