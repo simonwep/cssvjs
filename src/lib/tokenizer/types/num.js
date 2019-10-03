@@ -2,22 +2,28 @@ const {isNumeric} = require('../tools/is');
 
 module.exports = stream => {
     let peek = stream.peek();
+    let prefix = peek === '-' || peek === '+';
 
-    if (!isNumeric(peek) && peek !== '-' && peek !== '.') {
+    if (!isNumeric(peek) && peek !== '.' && !prefix) {
         return null;
     }
 
     let number = '';
     let numeric = false;
     let decimal = false;
+    let negative = false;
 
     // Check if number is negative
     stream.stash();
-    const negative = (peek === '-' ? stream.next() : null);
+    if (prefix) {
+        negative = peek === '-';
+
+        // Skip peeked valued and read next
+        peek = stream.next() && stream.peek();
+    }
 
     // Expect the next character to be either a number or a dot (indicator for decimal)
-    peek = stream.peek();
-    if (!stream.hasNext() || (negative && !isNumeric(peek) && peek !== '.')) {
+    if (!peek || !stream.hasNext() || (negative && !isNumeric(peek) && peek !== '.')) {
         stream.pop();
         return null;
     }
