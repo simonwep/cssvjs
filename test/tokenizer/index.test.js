@@ -32,4 +32,14 @@ describe('Tokenizer', () => {
         const [str] = tokenizer(`"Hello"`);
         expect(str.value).to.equal('Hello');
     });
+
+    it('Should parse numbers with scientific notation', () => {
+        const [a, b, c] = tokenizer(`5e2 5e-2 5e+3`)
+            .filter(v => v.type === 'num')
+            .map(v => v.value);
+
+        expect(a).to.equal(500);
+        expect(b).to.equal(0.05);
+        expect(c).to.equal(5000);
+    });
 });

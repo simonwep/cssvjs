@@ -8,6 +8,7 @@ module.exports = stream => {
     }
 
     let number = '';
+    let numeric = false;
     let decimal = false;
 
     // Check if number is negative
@@ -25,14 +26,31 @@ module.exports = stream => {
         const ch = stream.peek();
 
         if (ch === '.') {
+            numeric = false;
+
+            // There can be only one decimal place
             if (decimal) {
                 throw 'Number cannot contain more than one decimal place.';
             } else {
                 number += ch;
                 decimal = true;
             }
+
         } else if (isNumeric(ch)) {
+            numeric = true;
             number += ch;
+        } else if (numeric && ch === 'e') {
+            stream.stash();
+
+            const sn = parseScientificNotation(stream);
+            if (sn !== null) {
+                number += ch + sn;
+                break;
+            } else {
+                stream.pop();
+                break;
+            }
+
         } else {
             break;
         }
@@ -50,3 +68,37 @@ module.exports = stream => {
         value: negative ? -parsed : parsed
     };
 };
+
+
+function parseScientificNotation(stream) {
+    let prefixUsed = false;
+    let numeric = false;
+    let notation = '';
+    stream.next();
+
+    while (stream.hasNext()) {
+        const ch = stream.peek();
+
+        if (isNumeric(ch)) {
+            notation += ch;
+            numeric = true;
+        } else if (ch === '+' || ch === '-') {
+
+            // +/- can only be used at the very beginning
+            if (prefixUsed) {
+                return null;
+            }
+
+            notation += ch;
+        } else if (numeric) {
+            break;
+        } else {
+            return null;
+        }
+
+        prefixUsed = true;
+        stream.next();
+    }
+
+    return notation;
+}
