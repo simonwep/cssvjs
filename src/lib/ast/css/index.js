@@ -4,6 +4,7 @@ const position = require('./position');
 const length = require('./length');
 const string = require('./string');
 const angle = require('./angle');
+const ratio = require('./ratio');
 const time = require('./time');
 
 module.exports = {
@@ -13,5 +14,6 @@ module.exports = {
     length,
     string,
     angle,
+    ratio,
     time
 };

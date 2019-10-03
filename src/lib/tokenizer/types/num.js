@@ -2,7 +2,7 @@ const {isNumeric} = require('../tools/is');
 
 module.exports = stream => {
     let peek = stream.peek();
-    let prefix = peek === '-' || peek === '+';
+    const prefix = peek === '-' || peek === '+';
 
     if (!isNumeric(peek) && peek !== '.' && !prefix) {
         return null;
