@@ -6,5 +6,5 @@ module.exports = (stream, type, ...vals) => {
         return stream.next();
     }
 
-    return false;
+    return null;
 };

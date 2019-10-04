@@ -6,6 +6,7 @@ const string = require('./string');
 const angle = require('./angle');
 const ratio = require('./ratio');
 const time = require('./time');
+const url = require('./url');
 
 module.exports = {
     sideOrCorner,
@@ -15,5 +16,6 @@ module.exports = {
     string,
     angle,
     ratio,
-    time
+    time,
+    url
 };

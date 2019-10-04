@@ -65,7 +65,8 @@ module.exports = stream => {
     }
 
     if (number.endsWith('.')) {
-        throw 'Number cannot end with a dot.';
+        stream.pop();
+        return null;
     }
 
     const parsed = Number(number);
