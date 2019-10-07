@@ -1,11 +1,12 @@
 const optional = require('../tools/optional');
+const maybe = require('../tools/maybe');
 const percentage = require('./percentage');
-const length = require('./length');
 
+const length = require('./length');
 const vpos = ['bottom', 'top'];
 const hpos = ['left', 'right'];
 
-module.exports = stream => {
+module.exports = maybe(stream => {
     const a = length(stream) ||
         percentage(stream) ||
         optional(stream, 'kw', ...[...vpos, ...hpos, 'center']);
@@ -46,4 +47,4 @@ module.exports = stream => {
         type: 'position',
         value: [a, b, c, d]
     };
-};
+});

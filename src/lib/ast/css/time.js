@@ -1,7 +1,8 @@
 const numberWithUnit = require('../util/numberWithUnit');
+const maybe = require('../tools/maybe');
 
-module.exports = stream => numberWithUnit(
+module.exports = maybe(stream => numberWithUnit(
     stream,
     'time',
     's', 'ms'
-);
+));

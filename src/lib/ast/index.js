@@ -18,16 +18,12 @@ module.exports = tokens => {
     const stream = createStream(tokens);
 
     for (const parser of types) {
-        stream.stash();
 
         // TODO: Case-insenstitiv?!
-        // TODO: Silent errors?
         const parsed = parser(stream);
         if (parsed && !stream.hasNext()) {
             return parsed;
         }
-
-        stream.pop();
     }
 
     return null;

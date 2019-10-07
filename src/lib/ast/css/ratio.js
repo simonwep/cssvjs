@@ -1,7 +1,8 @@
 const optional = require('../tools/optional');
 const consume = require('../tools/consume');
+const maybe = require('../tools/maybe');
 
-module.exports = stream => {
+module.exports = maybe(stream => {
     const [a, div, b] = consume(
         stream,
         optional,
@@ -22,4 +23,4 @@ module.exports = stream => {
     }
 
     return null;
-};
+});

@@ -1,7 +1,7 @@
 const optional = require('../tools/optional');
-const expect = require('../tools/expect');
+const maybe = require('../tools/maybe');
 
-module.exports = stream => {
+module.exports = maybe(stream => {
     const entry = optional(stream, 'kw', 'url');
 
     // An URL needs to be followed by a open bracket
@@ -13,7 +13,10 @@ module.exports = stream => {
     const qurl = optional(stream, 'str');
 
     if (qurl) {
-        expect(stream, 'punc', ')');
+        if (!optional(stream, 'punc', ')')) {
+            return null;
+        }
+
         return {
             type: 'url',
             format: 'quotated',
@@ -41,4 +44,4 @@ module.exports = stream => {
     }
 
     return null;
-};
+});

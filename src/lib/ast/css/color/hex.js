@@ -2,7 +2,6 @@ const isHexChar = c => (c >= '0' && c <= '9') || (c >= 'a' && c <= 'f') || (c >=
 module.exports = stream => {
     let value = '';
 
-    stream.stash();
     while (stream.hasNext()) {
         const peek = stream.peek();
         stream.next();
@@ -23,14 +22,12 @@ module.exports = stream => {
 
     // Validate length
     if (valLength !== 3 && valLength !== 6 && !alphaValue) {
-        stream.pop();
         return null;
     }
 
     // Validate character-set
     for (const ch of value) {
         if (!isHexChar(ch)) {
-            stream.pop();
             return null;
         }
     }

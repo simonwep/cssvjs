@@ -1,7 +1,7 @@
 const optional = require('../tools/optional');
+const maybe = require('../tools/maybe');
 
-module.exports = stream => {
-    stream.stash();
+module.exports = maybe(stream => {
     const num = optional(stream, 'num');
 
     if (num) {
@@ -15,6 +15,5 @@ module.exports = stream => {
         }
     }
 
-    stream.pop();
     return null;
-};
+});

@@ -1,9 +1,8 @@
 const optional = require('../tools/optional');
 
 module.exports = (stream, type, ...units) => {
-    stream.stash();
-
     const num = optional(stream, 'num');
+
     if (num) {
         const unit = optional(stream, 'kw', ...units);
 
@@ -16,6 +15,5 @@ module.exports = (stream, type, ...units) => {
         }
     }
 
-    stream.pop();
     return null;
 };
