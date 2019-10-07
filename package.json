@@ -1,12 +1,17 @@
 {
     "name": "cssvjs",
     "version": "0.0.0",
-    "description": "",
-    "main": "src/index.js",
-    "keywords": [],
+    "description": "CSS Value parser",
+    "main": "./dist/cssvjs.min.js",
+    "keywords": [
+        "css",
+        "ast",
+        "parser"
+    ],
     "author": "Simon Reinisch <trash@reinisch.io>",
     "license": "MIT",
     "scripts": {
+        "build": "webpack",
         "lint": "eslint ./src --fix",
         "test": "mocha test/**/*.test.js",
         "dev:test": "mocha test/**/*.test.js --watch --watch-extensions js"
@@ -15,6 +20,8 @@
         "chai": "^4.2.0",
         "eslint": "^6.5.1",
         "eslint-config-problems": "^3.0.1",
-        "mocha": "^6.2.1"
+        "mocha": "^6.2.1",
+        "webpack": "^4.41.0",
+        "webpack-cli": "^3.3.9"
     }
 }

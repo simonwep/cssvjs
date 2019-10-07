@@ -1,4 +1,4 @@
-const parse = require('../../src');
+const {parse} = require('../../src');
 const {expect} = require('chai');
 
 describe('CSS Type: <angle>', () => {

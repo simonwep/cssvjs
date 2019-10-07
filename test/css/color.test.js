@@ -1,4 +1,4 @@
-const parse = require('../../src');
+const {parse} = require('../../src');
 const {expect} = require('chai');
 
 describe('CSS Type: <color>', () => {
@@ -126,8 +126,8 @@ describe('CSS Type: <color>', () => {
         );
     });
 
-    it('should parse "rgba(1e2, .5e1, .5e0, +.25e2%)"', () => {
-        expect(parse('rgba(1e2, .5e1, .5e0, +.25e2%)')).to.deep.equal(
+    it('should parse "rgb(1e2, .5e1, .5e0, +.25e2%)"', () => {
+        expect(parse('rgb(1e2, .5e1, .5e0, +.25e2%)')).to.deep.equal(
             {
                 type: 'color',
                 format: 'rgba',

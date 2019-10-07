@@ -1,5 +1,5 @@
 const {expect} = require('chai');
-const parse = require('../../src');
+const {parse} = require('../../src');
 
 describe('CSS Type: <length>', () => {
     const units = ['cap', 'ch', 'em', 'ex', 'ic', 'lh', 'rem', 'rlh', 'vh', 'vw', 'vi', 'vb', 'vmin', 'vmax', 'px', 'cm', 'mm', 'Q', 'in', 'pc', 'pt', 'mozmm'];

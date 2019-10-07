@@ -1,5 +1,5 @@
 const {expect} = require('chai');
-const parse = require('../../src');
+const {parse} = require('../../src');
 
 describe('CSS Type: <time>', () => {
     const units = ['s', 'ms'];

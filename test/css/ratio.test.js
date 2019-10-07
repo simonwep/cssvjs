@@ -1,7 +1,7 @@
 const {expect} = require('chai');
-const parse = require('../../src');
+const {parse} = require('../../src');
 
-describe('CSS Type: <angle>', () => {
+describe('CSS Type: <ratio>', () => {
 
     it(`Should parse a valid ratio: 3/4 `, () => {
         expect(parse('3/4')).to.deep.equal({

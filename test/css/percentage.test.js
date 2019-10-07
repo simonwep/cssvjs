@@ -1,5 +1,5 @@
 const {expect} = require('chai');
-const parse = require('../../src');
+const {parse} = require('../../src');
 
 describe('CSS Type: <percentage>', () => {
 
@@ -9,5 +9,4 @@ describe('CSS Type: <percentage>', () => {
             value: 0.9
         });
     });
-
 });
