@@ -168,16 +168,15 @@ describe('CSS Type: <color>', () => {
         );
     });
 
-    it('should parse "hsl(270 60% 50% / 15%)"', () => {
-        expect(parse('hsla(4.71239rad, 60%, 70%, 0.3)')).to.deep.equal({
-                format: 'hsla',
+    it('should parse "hsl(4.71239rad 60% 50% / 15%)"', () => {
+        expect(parse('hsl(4.71239rad 60% 50% / 15%)')).to.deep.equal({
                 type: 'color',
+                format: 'hsla',
                 value: [
                     {type: 'angle', unit: 'rad', value: 4.71239},
                     {type: 'percentage', value: 60},
-                    {type: 'percentage', value: 70},
-                    {type: 'num', value: 0.3}
-                ]
+                    {type: 'percentage', value: 50},
+                    {type: 'percentage', value: 15}]
             }
         );
     });
@@ -202,27 +201,17 @@ describe('CSS Type: <color>', () => {
         '#fffffffs',
         'rgb(300, 32, 34)',
         'rgb(300, 32 34)',
-        'rgb(10, 34, 5, 0.3)',
-        'rgba(10, 34, 5, 1.01)',
         'rgba(10% 0 1% / 7%)',
         'rgba(10% 0% 5% / -.e5%)',
         'rgba(3.5%, 0.3%, 2%, 120%)',
         'hsl(10, 33, 44%)',
-        'hsl(10, 33%, 44%, 0.4)',
         'hsla(10, 33%)',
         'hsla(3.5% 0.3% 2% 120%)'
     ];
 
     for (const str of invalidValues) {
         it(`should return null for ${str}`, () => {
-            const result = parse(str);
-
-            if (result) {
-                console.log(result);
-            }
-
-            expect(result).to.equal(null);
+            expect(parse(str)).to.equal(null);
         });
     }
-
 });

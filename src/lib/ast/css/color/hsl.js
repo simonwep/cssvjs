@@ -4,10 +4,9 @@ const percentage = require('../percentage');
 const angle = require('../angle');
 const alpha = require('./alpha');
 
-module.exports = (stream, format) => {
-    const hasAlphaValue = format === 'hsla';
-
+module.exports = stream => {
     const h = percentage(stream) || angle(stream) || optional(stream, 'num');
+
     if (!h) {
         return null;
     }
@@ -28,14 +27,14 @@ module.exports = (stream, format) => {
         return null;
     }
 
-    let a;
-    if (hasAlphaValue && !(a = alpha(stream, commaSeperation))) {
+    const a = alpha(stream, commaSeperation);
+    if (a && !inRange(0, a.type === 'percentage' ? 100 : 1, a.value)) {
         return null;
     }
 
     return {
-        format,
         type: 'color',
-        value: hasAlphaValue ? [h, s, l, a] : [h, s, l]
+        format: a ? 'hsla' : 'hsl',
+        value: a ? [h, s, l, a] : [h, s, l]
     };
 };

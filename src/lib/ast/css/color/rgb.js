@@ -4,9 +4,9 @@ const percentage = require('../percentage');
 const alpha = require('./alpha');
 
 /* eslint-disable callback-return */
-module.exports = (stream, format) => {
-    const hasAlphaValue = format === 'rgba';
+module.exports = stream => {
     const r = percentage(stream) || optional(stream, 'num');
+
     if (!r) {
         return null;
     }
@@ -35,14 +35,14 @@ module.exports = (stream, format) => {
         return null;
     }
 
-    let a;
-    if (hasAlphaValue && !(a = alpha(stream, commaSeperation))) {
+    const a = alpha(stream, commaSeperation);
+    if (a && !inRange(0, a.type === 'percentage' ? 100 : 1, a.value)) {
         return null;
     }
 
     return {
-        format,
         type: 'color',
-        value: hasAlphaValue ? [r, g, b, a] : [r, g, b]
+        format: a ? 'rgba' : 'rgb',
+        value: a ? [r, g, b, a] : [r, g, b]
     };
 };

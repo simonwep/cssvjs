@@ -48,7 +48,7 @@ module.exports = stream => {
                     return null;
                 }
 
-                const parsed = rgb(stream, fmt);
+                const parsed = rgb(stream);
                 return (optional(stream, 'punc', ')') && parsed) || null;
             }
             case 'hsl':
@@ -58,7 +58,7 @@ module.exports = stream => {
                     return null;
                 }
 
-                const parsed = hsl(stream, fmt);
+                const parsed = hsl(stream);
                 return (optional(stream, 'punc', ')') && parsed) || null;
             }
         }
