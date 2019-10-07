@@ -5,6 +5,7 @@ const length = require('./length');
 const string = require('./string');
 const angle = require('./angle');
 const ratio = require('./ratio');
+const color = require('./color');
 const time = require('./time');
 const url = require('./url');
 
@@ -16,6 +17,7 @@ module.exports = {
     string,
     angle,
     ratio,
+    color,
     time,
     url
 };
