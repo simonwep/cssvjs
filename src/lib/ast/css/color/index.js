@@ -2,6 +2,7 @@ const optional = require('../../tools/optional');
 const check = require('../../tools/check');
 const rgb = require('./rgb');
 const hex = require('./hex');
+const hsl = require('./hsl');
 
 const colorKeywords = [
     'silver', 'gray', 'white', 'maroon', 'red', 'purple', 'fuchsia', 'green', 'lime', 'olive', 'yellow', 'navy', 'blue', 'teal', 'aqua',
@@ -47,8 +48,17 @@ module.exports = stream => {
                     return null;
                 }
 
-
                 const parsed = rgb(stream, fmt);
+                return (optional(stream, 'punc', ')') && parsed) || null;
+            }
+            case 'hsl':
+            case 'hsla': {
+
+                if (!optional(stream, 'punc', '(')) {
+                    return null;
+                }
+
+                const parsed = hsl(stream, fmt);
                 return (optional(stream, 'punc', ')') && parsed) || null;
             }
         }

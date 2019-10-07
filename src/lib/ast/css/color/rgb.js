@@ -1,12 +1,15 @@
 const inRange = require('../../../utils/inRange');
 const optional = require('../../tools/optional');
 const percentage = require('../percentage');
+const alpha = require('./alpha');
 
 /* eslint-disable callback-return */
 module.exports = (stream, format) => {
-    const alpha = format === 'rgba';
+    const hasAlphaValue = format === 'rgba';
     const r = percentage(stream) || optional(stream, 'num');
-    if (!r) return null;
+    if (!r) {
+        return null;
+    }
 
     const percentageSyntax = r.type === 'percentage';
     const commaSeperation = !!optional(stream, 'punc', ',');
@@ -16,11 +19,8 @@ module.exports = (stream, format) => {
 
     // Green value
     const g = next();
-    if (!g) {
-        return null;
-    }
 
-    if (commaSeperation && !optional(stream, 'punc', ',')) {
+    if (!g || (commaSeperation && !optional(stream, 'punc', ','))) {
         return null;
     }
 
@@ -32,30 +32,17 @@ module.exports = (stream, format) => {
 
     // Validate range
     if (!inRange(0, 255, r.value, g.value, b.value)) {
-        stream.pop();
         return null;
     }
 
     let a;
-    if (alpha) {
-
-
-        if (commaSeperation ? !optional(stream, 'punc', ',') : !optional(stream, 'punc', '/')) {
-            return null;
-        }
-
-        // The alpha value can always be either a number or percentage value
-        a = percentage(stream) || optional(stream, 'num');
-
-        // Validate range and parsed value
-        if (a === null || !inRange(0, a.type === 'percentage' ? 100 : 1, a.value)) {
-            return null;
-        }
+    if (hasAlphaValue && !(a = alpha(stream, commaSeperation))) {
+        return null;
     }
 
     return {
-        type: 'color',
         format,
-        value: alpha ? [r, g, b, a] : [r, g, b]
+        type: 'color',
+        value: hasAlphaValue ? [r, g, b, a] : [r, g, b]
     };
 };

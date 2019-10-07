@@ -141,6 +141,61 @@ describe('CSS Type: <color>', () => {
         );
     });
 
+    it('should parse "hsl(270, 60%, 70%)"', () => {
+        expect(parse('hsl(270, 60%, 70%)')).to.deep.equal({
+                format: 'hsl',
+                type: 'color',
+                value: [
+                    {type: 'num', value: 270},
+                    {type: 'percentage', value: 60},
+                    {type: 'percentage', value: 70}
+                ]
+            }
+        );
+    });
+
+    it('should parse "hsla(4.71239rad, 60%, 70%, 0.3)"', () => {
+        expect(parse('hsla(4.71239rad, 60%, 70%, 0.3)')).to.deep.equal({
+                format: 'hsla',
+                type: 'color',
+                value: [
+                    {type: 'angle', unit: 'rad', value: 4.71239},
+                    {type: 'percentage', value: 60},
+                    {type: 'percentage', value: 70},
+                    {type: 'num', value: 0.3}
+                ]
+            }
+        );
+    });
+
+    it('should parse "hsl(270 60% 50% / 15%)"', () => {
+        expect(parse('hsla(4.71239rad, 60%, 70%, 0.3)')).to.deep.equal({
+                format: 'hsla',
+                type: 'color',
+                value: [
+                    {type: 'angle', unit: 'rad', value: 4.71239},
+                    {type: 'percentage', value: 60},
+                    {type: 'percentage', value: 70},
+                    {type: 'num', value: 0.3}
+                ]
+            }
+        );
+    });
+
+    it('should parse "hsla(270 60% 50% / 15%)"', () => {
+        expect(parse('hsla(270 60% 50% / 15%)')).to.deep.equal({
+                format: 'hsla',
+                type: 'color',
+                value: [
+                    {type: 'num', value: 270},
+                    {type: 'percentage', value: 60},
+                    {type: 'percentage', value: 50},
+                    {type: 'percentage', value: 15}
+                ]
+            }
+        );
+    });
+
     const invalidValues = [
         '#fffbf',
         '#fnf',
@@ -151,7 +206,11 @@ describe('CSS Type: <color>', () => {
         'rgba(10, 34, 5, 1.01)',
         'rgba(10% 0 1% / 7%)',
         'rgba(10% 0% 5% / -.e5%)',
-        'rgba(3.5%, 0.3%, 2%, 120%)'
+        'rgba(3.5%, 0.3%, 2%, 120%)',
+        'hsl(10, 33, 44%)',
+        'hsl(10, 33%, 44%, 0.4)',
+        'hsla(10, 33%)',
+        'hsla(3.5% 0.3% 2% 120%)'
     ];
 
     for (const str of invalidValues) {
