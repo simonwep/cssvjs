@@ -1,14 +1,14 @@
 const optional = require('../tools/optional');
-const expect = require('../tools/expect');
 
 const hpos = ['left', 'right'];
 const vpos = ['top', 'bottom'];
 
 module.exports = stream => {
+    stream.stash();
     const kw = optional(stream, 'kw', 'to');
+    const a = optional(stream, 'kw', ...hpos, ...vpos);
 
-    if (kw) {
-        const a = expect(stream, 'kw', ...hpos, ...vpos);
+    if (kw && a) {
         const b = optional(stream, 'kw', ...(hpos.includes(a.value) ? vpos : hpos));
 
         return {
@@ -17,5 +17,6 @@ module.exports = stream => {
         };
     }
 
+    stream.pop();
     return null;
 };
