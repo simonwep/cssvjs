@@ -2,9 +2,9 @@ const {isNumeric} = require('../tools/is');
 
 module.exports = stream => {
     let peek = stream.peek();
-    const prefix = peek === '-' || peek === '+';
+    const hasPrefix = peek === '-' || peek === '+';
 
-    if (!isNumeric(peek) && peek !== '.' && !prefix) {
+    if (!isNumeric(peek) && peek !== '.' && !hasPrefix) {
         return null;
     }
 
@@ -15,7 +15,7 @@ module.exports = stream => {
 
     // Check if number is negative
     stream.stash();
-    if (prefix) {
+    if (hasPrefix) {
         negative = peek === '-';
 
         // Skip peeked valued and read next
@@ -23,7 +23,7 @@ module.exports = stream => {
     }
 
     // Expect the next character to be either a number or a dot (indicator for decimal)
-    if (!peek || !stream.hasNext() || (negative && !isNumeric(peek) && peek !== '.')) {
+    if (!peek || !stream.hasNext() || (peek !== '.' && !isNumeric(peek))) {
         stream.pop();
         return null;
     }
