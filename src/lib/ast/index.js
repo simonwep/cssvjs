@@ -4,7 +4,9 @@ const percentage = require('./css/percentage');
 const resolution = require('./css/resolution');
 const blendMode = require('./css/blendMode');
 const position = require('./css/position');
+const integer = require('./css/integer');
 const flex = require('./css/flexValue');
+const number = require('./css/number');
 const length = require('./css/length');
 const string = require('./css/string');
 const angle = require('./css/angle');
@@ -26,7 +28,9 @@ const types = [
     time,
     angle,
     position,
-    blendMode
+    blendMode,
+    integer,
+    number
 ];
 
 module.exports = tokens => {
