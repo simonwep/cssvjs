@@ -1,5 +1,15 @@
-const {sideOrCorner, position, angle, length, ratio, color, url, string, time, percentage} = require('./css');
 const createStream = require('../stream');
+const sideOrCorner = require('./css/sideOrCorner');
+const percentage = require('./css/percentage');
+const position = require('./css/position');
+const length = require('./css/length');
+const string = require('./css/string');
+const angle = require('./css/angle');
+const ratio = require('./css/ratio');
+const color = require('./css/color');
+const time = require('./css/time');
+const url = require('./css/url');
+const flex = require('./css/flexValue');
 
 const types = [
     url,
@@ -9,6 +19,7 @@ const types = [
     percentage,
     length,
     ratio,
+    flex,
     time,
     angle,
     position

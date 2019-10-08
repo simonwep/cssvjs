@@ -6,6 +6,9 @@
     Fast, Refined CSS Value-Parser
 </h3>
 
+<br/>
+<br/>
+
 <p align="center">
   <img alt="gzip size" src="https://img.badgesize.io/https://raw.githubusercontent.com/Simonwep/cssvjs/master/dist/cssvjs.min.js?compression=gzip&style=flat-square">
   <img alt="brotli size" src="https://img.badgesize.io/https://raw.githubusercontent.com/Simonwep/cssvjs/master/dist/cssvjs.min.js?compression=brotli&style=flat-square">
@@ -25,10 +28,6 @@
      alt="Support me"
      src="https://img.shields.io/badge/patreon-support-f01a6c.svg?style=popout-square"></a>
 </p>
-
-<br/>
-<br/>
-
 
 ## Getting Started
 ⚠ cssvjs is currently **not stable** and **heavily under development**.
@@ -85,3 +84,4 @@ I'll slowly fill add more types. Version `1.0.0` will cover all the basic ones.
 * [`<string>`](https://developer.mozilla.org/en-US/docs/Web/CSS/string) [parser](https://github.com/Simonwep/cssvjs/blob/master/src/lib/ast/css/string.js) / [tests](https://github.com/Simonwep/cssvjs/blob/master/test/css/string.test.js)
 * [`<time>`](https://developer.mozilla.org/en-US/docs/Web/CSS/time) [parser](https://github.com/Simonwep/cssvjs/blob/master/src/lib/ast/css/time.js) / [tests](https://github.com/Simonwep/cssvjs/blob/master/test/css/time.test.js)
 * [`<url>`](https://developer.mozilla.org/en-US/docs/Web/CSS/url) [parser](https://github.com/Simonwep/cssvjs/blob/master/src/lib/ast/css/url.js) / [tests](https://github.com/Simonwep/cssvjs/blob/master/test/css/url.test.js)
+* [`<flex-value>`](https://developer.mozilla.org/en-US/docs/Web/CSS/flex_value) [parser](https://github.com/Simonwep/cssvjs/blob/master/src/lib/ast/css/flexValue.js) / [tests](https://github.com/Simonwep/cssvjs/blob/master/test/css/flexValue.test.js)
