@@ -1,6 +1,6 @@
 {
     "name": "cssvjs",
-    "version": "0.0.0",
+    "version": "0.0.1",
     "description": "CSS Value parser",
     "main": "./dist/cssvjs.min.js",
     "keywords": [
