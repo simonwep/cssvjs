@@ -1,19 +1,15 @@
-const optional = require('../tools/optional');
+const sequence = require('../tools/sequence');
 const maybe = require('../tools/maybe');
 
 module.exports = maybe(stream => {
-    const num = optional(stream, 'num');
+    const seq = sequence(stream, 'num', ['punc', '%']);
 
-    if (num) {
-        const unit = optional(stream, 'punc', '%');
-
-        if (unit) {
-            return {
-                type: 'percentage',
-                value: num.value
-            };
-        }
+    if (!seq) {
+        return null;
     }
 
-    return null;
+    return {
+        type: 'percentage',
+        value: seq[0].value
+    };
 });
