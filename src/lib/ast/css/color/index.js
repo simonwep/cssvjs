@@ -1,5 +1,6 @@
 const optional = require('../../tools/optional');
 const check = require('../../tools/check');
+const maybe = require('../../tools/maybe');
 const rgb = require('./rgb');
 const hex = require('./hex');
 const hsl = require('./hsl');
@@ -20,7 +21,7 @@ const colorKeywords = [
     'thistle', 'tomato', 'turquoise', 'violet', 'wheat', 'whitesmoke', 'yellowgreen'
 ];
 
-module.exports = stream => {
+module.exports = maybe(stream => {
 
     // Check for color keyword
     if (check(stream, 'kw', ...colorKeywords, 'transparent')) {
@@ -65,4 +66,4 @@ module.exports = stream => {
     }
 
     return null;
-};
+});

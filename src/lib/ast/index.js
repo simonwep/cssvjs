@@ -1,5 +1,6 @@
 const createStream = require('../stream');
 const sideOrCorner = require('./css/side-or-corner');
+const borderRadius = require('./css/border-radius');
 const percentage = require('./css/percentage');
 const resolution = require('./css/resolution');
 const blendMode = require('./css/blend-mode');
@@ -29,6 +30,7 @@ const types = [
     angle,
     position,
     blendMode,
+    borderRadius,
     integer,
     number
 ];
@@ -39,10 +41,14 @@ module.exports = tokens => {
     for (const parser of types) {
 
         // TODO: Case-insenstitiv?!
+        stream.stash();
+
         const parsed = parser(stream);
         if (parsed && !stream.hasNext()) {
             return parsed;
         }
+
+        stream.pop();
     }
 
     return null;
