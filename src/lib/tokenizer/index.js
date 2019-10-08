@@ -29,7 +29,7 @@ module.exports = str => {
             }
         }
 
-        throw `Unknown character: ${stream.peek()}`;
+        return [];
     }
 
     return tokens;

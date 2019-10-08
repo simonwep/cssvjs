@@ -7,9 +7,9 @@ describe('CSS Type: <ratio>', () => {
         expect(parse('3/4')).to.deep.equal({
             type: 'ratio',
             value: [
-                {type: 'num', value: 3},
+                {type: 'num', value: 3, decimal: false},
                 {type: 'punc', value: '/'},
-                {type: 'num', value: 4}
+                {type: 'num', value: 4, decimal: false}
             ]
         });
     });

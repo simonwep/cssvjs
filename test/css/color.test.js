@@ -40,9 +40,9 @@ describe('CSS Type: <color>', () => {
             type: 'color',
             format: 'rgb',
             value: [
-                {type: 'num', value: 51},
-                {type: 'num', value: 170},
-                {type: 'num', value: 51}
+                {type: 'num', value: 51, decimal: false},
+                {type: 'num', value: 170, decimal: false},
+                {type: 'num', value: 51, decimal: false}
             ]
         });
     });
@@ -52,10 +52,10 @@ describe('CSS Type: <color>', () => {
             type: 'color',
             format: 'rgba',
             value: [
-                {type: 'num', value: 4.2},
-                {type: 'num', value: 20.3},
-                {type: 'num', value: 0.5},
-                {type: 'num', value: 0.2}
+                {type: 'num', value: 4.2, decimal: true},
+                {type: 'num', value: 20.3, decimal: true},
+                {type: 'num', value: 0.5, decimal: true},
+                {type: 'num', value: 0.2, decimal: true}
             ]
         });
     });
@@ -104,9 +104,9 @@ describe('CSS Type: <color>', () => {
             type: 'color',
             format: 'rgba',
             value: [
-                {type: 'num', value: 40},
-                {type: 'num', value: 54},
-                {type: 'num', value: 22},
+                {type: 'num', value: 40, decimal: false},
+                {type: 'num', value: 54, decimal: false},
+                {type: 'num', value: 22, decimal: false},
                 {type: 'percentage', value: 23}
             ]
         });
@@ -132,9 +132,9 @@ describe('CSS Type: <color>', () => {
                 type: 'color',
                 format: 'rgba',
                 value: [
-                    {type: 'num', value: 100},
-                    {type: 'num', value: 5},
-                    {type: 'num', value: 0.5},
+                    {type: 'num', value: 100, decimal: false},
+                    {type: 'num', value: 5, decimal: true},
+                    {type: 'num', value: 0.5, decimal: true},
                     {type: 'percentage', value: 25}
                 ]
             }
@@ -146,7 +146,7 @@ describe('CSS Type: <color>', () => {
                 format: 'hsl',
                 type: 'color',
                 value: [
-                    {type: 'num', value: 270},
+                    {type: 'num', value: 270, decimal: false},
                     {type: 'percentage', value: 60},
                     {type: 'percentage', value: 70}
                 ]
@@ -162,7 +162,7 @@ describe('CSS Type: <color>', () => {
                     {type: 'angle', unit: 'rad', value: 4.71239},
                     {type: 'percentage', value: 60},
                     {type: 'percentage', value: 70},
-                    {type: 'num', value: 0.3}
+                    {type: 'num', value: 0.3, decimal: true}
                 ]
             }
         );
@@ -186,7 +186,7 @@ describe('CSS Type: <color>', () => {
                 format: 'hsla',
                 type: 'color',
                 value: [
-                    {type: 'num', value: 270},
+                    {type: 'num', value: 270, decimal: false},
                     {type: 'percentage', value: 60},
                     {type: 'percentage', value: 50},
                     {type: 'percentage', value: 15}

@@ -36,11 +36,12 @@ module.exports = stream => {
 
             // There can be only one decimal place
             if (decimal) {
-                throw 'Number cannot contain more than one decimal place.';
-            } else {
+                stream.pop();
+                return null;
+            } 
                 number += ch;
                 decimal = true;
-            }
+            
 
         } else if (isNumeric(ch)) {
             numeric = true;
@@ -71,8 +72,9 @@ module.exports = stream => {
 
     const parsed = Number(number);
     return {
+        decimal,
         type: 'num',
-        value: negative ? -parsed : parsed
+        value: parsed === 0 ? 0 : (negative ? -parsed : parsed)
     };
 };
 
