@@ -38,10 +38,10 @@ module.exports = stream => {
             if (decimal) {
                 stream.pop();
                 return null;
-            } 
-                number += ch;
-                decimal = true;
-            
+            }
+            number += ch;
+            decimal = true;
+
 
         } else if (isNumeric(ch)) {
             numeric = true;

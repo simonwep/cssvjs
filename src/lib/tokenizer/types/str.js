@@ -1,4 +1,4 @@
-const consumeEscaped = require('../tools/consumeEscaped');
+const consumeEscaped = require('../tools/consume-escaped');
 
 module.exports = stream => {
     for (const char of ['\'', '"']) {

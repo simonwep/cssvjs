@@ -1,4 +1,4 @@
-const inRange = require('../../../utils/inRange');
+const inRange = require('../../../utils/in-range');
 const optional = require('../../tools/optional');
 const percentage = require('../percentage');
 const alpha = require('./alpha');
