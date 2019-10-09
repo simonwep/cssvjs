@@ -1,8 +1,8 @@
 const optional = require('../tools/optional');
 const maybe = require('../tools/maybe');
 const percentage = require('./percentage');
-
 const length = require('./length');
+
 const vpos = ['bottom', 'top'];
 const hpos = ['left', 'right'];
 
