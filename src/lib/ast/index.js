@@ -1,4 +1,4 @@
-const createStream = require('../stream');
+const createStream = require('./stream');
 const borderRadius = require('./css/border-radius');
 const basicShape = require('./css/basic-shape');
 const percentage = require('./css/percentage');

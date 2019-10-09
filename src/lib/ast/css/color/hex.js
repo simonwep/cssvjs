@@ -1,23 +1,30 @@
 const isHexChar = c => (c >= '0' && c <= '9') || (c >= 'a' && c <= 'f') || (c >= 'A' && c <= 'F');
 module.exports = stream => {
-    let value = '';
+    let hex = '';
 
-    while (stream.hasNext()) {
-        const peek = stream.peek();
-        stream.next();
+    while (stream.hasNext(true)) {
+        const node = stream.peek(true);
 
-        if (peek.type === 'kw' || isHexChar(peek.value)) {
-            value += peek.value;
+        if (node.type === 'ws') {
+            break;
+        } else {
+            const {type, value} = node;
 
-            if (value.length >= 8) {
+            if (type === 'kw' || type === 'num') {
+                hex += value;
+
+                if (value.length >= 8) {
+                    break;
+                }
+            } else {
                 break;
             }
-        } else {
-            break;
         }
+
+        stream.next(true);
     }
 
-    const valLength = value.length;
+    const valLength = hex.length;
     const alphaValue = valLength === 4 || valLength === 8;
 
     // Validate length
@@ -26,7 +33,7 @@ module.exports = stream => {
     }
 
     // Validate character-set
-    for (const ch of value) {
+    for (const ch of hex) {
         if (!isHexChar(ch)) {
             return null;
         }
@@ -35,6 +42,6 @@ module.exports = stream => {
     return {
         type: 'color',
         format: alphaValue ? 'hexa' : 'hex',
-        value
+        value: hex
     };
 };

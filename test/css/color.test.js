@@ -11,6 +11,14 @@ describe('CSS Type: <color>', () => {
         });
     });
 
+    it('should parse "#b96"', () => {
+        expect(parse('#b96')).to.deep.equal({
+            type: 'color',
+            format: 'hex',
+            value: 'b96'
+        });
+    });
+
     it('should parse "#b9ff"', () => {
         expect(parse('#b9ff')).to.deep.equal({
             type: 'color',
@@ -198,6 +206,7 @@ describe('CSS Type: <color>', () => {
     const invalidValues = [
         '#fffbf',
         '#fnf',
+        '#f ff',
         '#fffffffs',
         'rgb(300, 32, 34)',
         'rgb(300, 32 34)',

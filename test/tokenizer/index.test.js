@@ -28,6 +28,13 @@ describe('Tokenizer', () => {
         expect(arr).to.deep.equal([0.35, -3, -27.4, 3.3]);
     });
 
+    it('Should detect whitespace', () => {
+        const arr = tokenizer(testStr)
+            .filter(v => v.type === 'ws');
+
+        expect(arr).to.have.lengthOf(5);
+    });
+
     it('Should parse numbers with scientific notation', () => {
         const [a, b, c, d] = tokenizer(`abc+5e2gfgd   dfg5e-2bb c5e+3s +.25e2`)
             .filter(v => v.type === 'num')

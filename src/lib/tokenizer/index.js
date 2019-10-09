@@ -1,8 +1,7 @@
-const {isWhiteSpace} = require('./tools/is');
-const consume = require('./tools/consume-while');
-const createStream = require('../stream');
+const createStream = require('./stream');
 
 const parser = [
+    require('./types/ws'),
     require('./types/str'),
     require('./types/num'),
     require('./types/kw'),
@@ -15,9 +14,6 @@ module.exports = str => {
 
     /* eslint-disable no-labels */
     outer: while (stream.hasNext()) {
-
-        // Ignore whitespace
-        consume(stream, isWhiteSpace);
 
         // Find matching parser
         for (const parse of parser) {
