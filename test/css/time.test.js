@@ -17,7 +17,7 @@ describe('CSS Type: <time>', () => {
         });
     }
 
-    it('Should return null (or thrown an error) on invalid units or numbers', () => {
+    it('Should return null on invalid units or numbers', () => {
         expect(parse('1231ddd')).to.equal(null);
         expect(parse('3232.232.dee')).to.equal(null);
     });

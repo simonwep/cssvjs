@@ -1,29 +1,13 @@
+const expandAbbreviatedValus = require('../util/expand-abbreviated-values');
+const lengthPercentage = require('../combies/length-percentage');
 const optional = require('../tools/optional');
 const maybe = require('../tools/maybe');
-const percentage = require('./percentage');
-const length = require('./length');
-
-function normalizeRadiusArray(arr) {
-    switch (arr.length) {
-        case 1: {
-            const [a] = arr;
-            return [a, a, a, a];
-        }
-        case 2:
-            return [...arr, ...arr];
-        case 3:
-            return [...arr, arr[1]];
-        default:
-            return arr;
-    }
-}
 
 module.exports = maybe(stream => {
-    const percentOrLength = () => percentage(stream) || length(stream);
     const consumeSide = () => {
         const arr = [];
         for (let i = 0; i < 4; i++) {
-            const next = percentOrLength();
+            const next = lengthPercentage(stream);
 
             if (next) {
                 arr.push(next);
@@ -32,20 +16,20 @@ module.exports = maybe(stream => {
             }
         }
 
-        return normalizeRadiusArray(arr);
+        return expandAbbreviatedValus(arr);
     };
 
     const left = consumeSide();
     let right = null;
 
-    if (!left.length) {
+    if (!left) {
         return null;
     }
 
     if (optional(stream, 'punc', '/')) {
         right = consumeSide();
 
-        if (!right.length) {
+        if (!right) {
             return null;
         }
     } else {
