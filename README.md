@@ -75,7 +75,7 @@ All values are fully [tested](https://github.com/Simonwep/cssvjs/tree/master/tes
 I'll slowly fill add more types. Version `1.0.0` will cover all the basic ones.
 
 * [`<angle>`](https://developer.mozilla.org/en-US/docs/Web/CSS/angle) [parser](https://github.com/Simonwep/cssvjs/blob/master/src/lib/ast/css/angle.js) / [tests](https://github.com/Simonwep/cssvjs/blob/master/test/css/angle.test.js)
-* [`<color>`](https://developer.mozilla.org/en-US/docs/Web/CSS/color_value) [parser](https://github.com/Simonwep/cssvjs/blob/master/src/lib/ast/css/color/index.js) / [tests](https://github.com/Simonwep/cssvjs/blob/master/test/css/color.test.js)
+* [`<color>`](https://developer.mozilla.org/en-US/docs/Web/CSS/color_value) [parser](https://github.com/Simonwep/cssvjs/blob/master/src/lib/ast/css/color) / [tests](https://github.com/Simonwep/cssvjs/blob/master/test/css/color.test.js)
 * [`<length>`](https://developer.mozilla.org/en-US/docs/Web/CSS/length) [parser](https://github.com/Simonwep/cssvjs/blob/master/src/lib/ast/css/length.js) / [tests](https://github.com/Simonwep/cssvjs/blob/master/test/css/length.test.js)
 * [`<percentage>`](https://developer.mozilla.org/en-US/docs/Web/CSS/percentage) [parser](https://github.com/Simonwep/cssvjs/blob/master/src/lib/ast/css/percentage.js) / [tests](https://github.com/Simonwep/cssvjs/blob/master/test/css/percentage.test.js)
 * [`<position>`](https://developer.mozilla.org/en-US/docs/Web/CSS/position_value) [parser](https://github.com/Simonwep/cssvjs/blob/master/src/lib/ast/css/position.js) / [tests](https://github.com/Simonwep/cssvjs/blob/master/test/css/position.test.js)
@@ -90,3 +90,4 @@ I'll slowly fill add more types. Version `1.0.0` will cover all the basic ones.
 * [`<integer>`](https://developer.mozilla.org/en-US/docs/Web/CSS/integer) [parser](https://github.com/Simonwep/cssvjs/blob/master/src/lib/ast/css/integer.js) / [tests](https://github.com/Simonwep/cssvjs/blob/master/test/css/integer.test.js)
 * [`<number>`](https://developer.mozilla.org/en-US/docs/Web/CSS/number) [parser](https://github.com/Simonwep/cssvjs/blob/master/src/lib/ast/css/number.js) / [tests](https://github.com/Simonwep/cssvjs/blob/master/test/css/number.test.js)
 * [`<border-radius>`](https://developer.mozilla.org/en-US/docs/Web/CSS/border-radius) [parser](https://github.com/Simonwep/cssvjs/blob/master/src/lib/ast/css/border-radius.js) / [tests](https://github.com/Simonwep/cssvjs/blob/master/test/css/border-radius.test.js)
+* [`<basic-shape>`](https://developer.mozilla.org/en-US/docs/Web/CSS/basic-shape) [parser](https://github.com/Simonwep/cssvjs/blob/master/src/lib/ast/css/basic-shape) / [tests](https://github.com/Simonwep/cssvjs/blob/master/test/css/basic-shape.test.js)

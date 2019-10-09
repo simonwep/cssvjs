@@ -1,6 +1,7 @@
 const createStream = require('../stream');
 const sideOrCorner = require('./css/side-or-corner');
 const borderRadius = require('./css/border-radius');
+const basicShape = require('./css/basic-shape');
 const percentage = require('./css/percentage');
 const resolution = require('./css/resolution');
 const blendMode = require('./css/blend-mode');
@@ -21,6 +22,7 @@ const types = [
     color,
     string,
     sideOrCorner,
+    basicShape,
     percentage,
     resolution,
     length,

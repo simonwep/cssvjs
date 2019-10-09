@@ -5,7 +5,7 @@ module.exports = (stream, ...sequence) => {
 
     for (const part of sequence) {
         const next = Array.isArray(part) ?
-            optional(stream, part[0], part[1]) :
+            optional(stream, part[0], ...part.slice(1)) :
             optional(stream, part);
 
         if (next) {
