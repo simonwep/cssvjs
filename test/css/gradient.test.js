@@ -79,8 +79,8 @@ describe('CSS Type: <gradient>', () => {
         });
     });
 
-    it('Should parse "conic-gradient(from 0.25turn at 50% 30%, #f69d3c, 10deg, #3f87a6 10deg 20deg)"', () => {
-        expect(parse('conic-gradient(from 0.25turn at 50% 30%, #f69d3c, 10deg, #3f87a6 10deg 20deg)')).to.deep.equal({
+    it('Should parse "conic-gradient(from 0.25turn at 50% 30%, #f69d3c, 10deg, #ebf8e1 10deg 20deg)"', () => {
+        expect(parse('conic-gradient(from 0.25turn at 50% 30%, #f69d3c, 10deg, #ebf8e1 10deg 20deg)')).to.deep.equal({
             type: 'conic-gradient',
             value: {
                 type: 'conic',
@@ -111,7 +111,7 @@ describe('CSS Type: <gradient>', () => {
                     },
                     {
                         type: 'color-stop',
-                        color: {type: 'color', format: 'hex', value: '3f87a6'},
+                        color: {type: 'color', format: 'hex', value: 'ebf8e1'},
                         range: [
                             {type: 'angle', unit: 'deg', value: 10},
                             {type: 'angle', unit: 'deg', value: 20}

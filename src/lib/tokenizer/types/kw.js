@@ -1,11 +1,17 @@
-const {isNonWhitespace} = require('../tools/is');
+const {isNonWhitespace, isNumeric} = require('../tools/is');
 const consume = require('../tools/consume-while');
 
 module.exports = stream => {
-    const str = consume(stream, isNonWhitespace);
 
-    return str ? {
-        type: 'kw',
-        value: str
-    } : null;
+    if (isNonWhitespace(stream.peek())) {
+        const str = consume(stream, v => isNonWhitespace(v) || isNumeric(v));
+
+        return str ? {
+            type: 'kw',
+            value: str
+        } : null;
+    }
+
+    return null;
+
 };

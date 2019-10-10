@@ -36,7 +36,7 @@ describe('Tokenizer', () => {
     });
 
     it('Should parse numbers with scientific notation', () => {
-        const [a, b, c, d] = tokenizer(`abc+5e2gfgd   dfg5e-2bb c5e+3s +.25e2`)
+        const [a, b, c, d] = tokenizer(`abc+5e2gfgd   dfg 5e-2 bb c 5e+3s +.25e2`)
             .filter(v => v.type === 'num')
             .map(v => v.value);
 

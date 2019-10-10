@@ -19,7 +19,6 @@ module.exports = str => {
         for (const parse of parser) {
             const parsed = parse(stream);
 
-            // TODO: Fix misintepreting of numbers
             if (parsed) {
                 tokens.push(parsed);
                 continue outer;

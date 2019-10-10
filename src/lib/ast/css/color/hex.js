@@ -16,6 +16,7 @@ module.exports = stream => {
                 hex += value;
 
                 if (value.length >= 8) {
+                    stream.next(true);
                     break;
                 }
             } else {
