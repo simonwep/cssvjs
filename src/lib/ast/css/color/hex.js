@@ -1,6 +1,8 @@
+const optional = require('../../tools/optional');
+
 const isHexChar = c => (c >= '0' && c <= '9') || (c >= 'a' && c <= 'f') || (c >= 'A' && c <= 'F');
 module.exports = stream => {
-    let hex = '';
+    let hex = optional(stream, 'punc', '#') || '';
 
     while (stream.hasNext(true)) {
         const node = stream.peek(true);

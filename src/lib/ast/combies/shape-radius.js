@@ -1,7 +1,8 @@
 const lengthPercentage = require('./length-percentage');
 const sequence = require('../tools/sequence');
+const maybe = require('../tools/maybe');
 
-module.exports = stream => {
+module.exports = maybe(stream => {
     const lp = lengthPercentage(stream);
 
     if (lp) {
@@ -20,4 +21,4 @@ module.exports = stream => {
     }
 
     return null;
-};
+});

@@ -11,7 +11,9 @@ module.exports = maybe(stream => {
         percentage(stream) ||
         optional(stream, 'kw', ...[...vpos, ...hpos, 'center']);
 
-    if (!a) return null;
+    if (!a) {
+        return null;
+    }
 
     const secondkw = [...(hpos.includes(a.value) ? vpos : hpos), 'center'];
     const b = length(stream) ||
@@ -28,7 +30,6 @@ module.exports = maybe(stream => {
     }
 
     const c = optional(stream, 'kw', ...secondkw);
-
     if (!c) {
 
         // Double value
@@ -39,8 +40,9 @@ module.exports = maybe(stream => {
     }
 
     const d = length(stream) || percentage(stream);
-
-    if (!d) return null;
+    if (!d) {
+        return null;
+    }
 
     // Quadruple
     return {

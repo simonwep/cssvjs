@@ -5,6 +5,7 @@ const percentage = require('./css/percentage');
 const resolution = require('./css/resolution');
 const blendMode = require('./css/blend-mode');
 const position = require('./css/position');
+const gradient = require('./css/gradient');
 const integer = require('./css/integer');
 const flex = require('./css/flex-value');
 const number = require('./css/number');
@@ -20,6 +21,7 @@ const types = [
     url,
     color,
     string,
+    gradient,
     basicShape,
     percentage,
     resolution,
