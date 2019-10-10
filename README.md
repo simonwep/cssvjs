@@ -50,8 +50,8 @@ Include directly via jsdelivr:
 
 ## Usage
 ```js 
-import {parse} from 'cssjvs';
-// const {parse} = require('cssjvs'); // Without es6 import
+import {parse} from 'cssvjs';
+// const {parse} = require('cssvjs'); // Without es6 import
 // const {parse} = CSSvJS; // In a browser env
 console.log(parse(`rgba(40 54 22 / 23%)`));
 ```

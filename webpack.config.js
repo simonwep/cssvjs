@@ -12,7 +12,6 @@ module.exports = {
         publicPath: 'dist',
         filename: '[name]',
         library: 'CSSvJS',
-        libraryExport: 'default',
         libraryTarget: 'umd'
     },
 
