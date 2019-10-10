@@ -10,12 +10,7 @@ describe('CSS Type: <gradient>', () => {
                 type: 'linear',
                 modifier: {
                     type: 'side',
-                    value: [
-                        {
-                            type: 'kw',
-                            value: 'right'
-                        }
-                    ]
+                    value: ['right']
                 },
                 stops: [
                     {

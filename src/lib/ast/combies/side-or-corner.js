@@ -12,7 +12,7 @@ module.exports = maybe(stream => {
 
         return {
             type: b ? 'corner' : 'side',
-            value: b ? [a, b] : [a]
+            value: b ? [a.value, b.value] : [a.value]
         };
     }
 
