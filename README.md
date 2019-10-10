@@ -62,9 +62,9 @@ which will print the following to the console:
   type: 'color',
   format: 'rgba',
   value: [
-    {type: 'num', value: 40},
-    {type: 'num', value: 54},
-    {type: 'num', value: 22},
+    {type: 'number', value: 40},
+    {type: 'number', value: 54},
+    {type: 'number', value: 22},
     {type: 'percentage', value: 23}
   ]
 }

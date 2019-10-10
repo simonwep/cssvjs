@@ -1,5 +1,6 @@
 const optional = require('../../tools/optional');
 const percentage = require('../percentage');
+const number = require('../number');
 
 module.exports = (stream, commaSeperation) => {
 
@@ -8,5 +9,5 @@ module.exports = (stream, commaSeperation) => {
     }
 
     // The alpha value can always be either a number or percentage value
-    return percentage(stream) || optional(stream, 'num');
+    return percentage(stream) || number(stream);
 };

@@ -1,11 +1,12 @@
 const inRange = require('../../../utils/in-range');
 const optional = require('../../tools/optional');
 const percentage = require('../percentage');
+const number = require('../number');
 const alpha = require('./alpha');
 
 /* eslint-disable callback-return */
 module.exports = stream => {
-    const r = percentage(stream) || optional(stream, 'num');
+    const r = percentage(stream) || number(stream);
 
     if (!r) {
         return null;
@@ -13,9 +14,7 @@ module.exports = stream => {
 
     const percentageSyntax = r.type === 'percentage';
     const commaSeperation = !!optional(stream, 'punc', ',');
-    const next = () => percentageSyntax ?
-        percentage(stream) :
-        optional(stream, 'num');
+    const next = () => percentageSyntax ? percentage(stream) : number(stream);
 
     // Green value
     const g = next();

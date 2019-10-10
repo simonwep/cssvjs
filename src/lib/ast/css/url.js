@@ -1,5 +1,6 @@
 const optional = require('../tools/optional');
 const maybe = require('../tools/maybe');
+const string = require('./string');
 
 module.exports = maybe(stream => {
     const entry = optional(stream, 'kw', 'url');
@@ -10,7 +11,7 @@ module.exports = maybe(stream => {
     }
 
     // Check if URL is quotated or in plain text
-    const qurl = optional(stream, 'str');
+    const qurl = string(stream);
 
     if (qurl) {
         if (!optional(stream, 'punc', ')')) {

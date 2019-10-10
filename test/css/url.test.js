@@ -16,7 +16,7 @@ describe('CSS Type: <url>', () => {
             type: 'url',
             format: 'quotated',
             value: {
-                type: 'str',
+                type: 'string',
                 value: 'http://www.example.com'
             }
         });

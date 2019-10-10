@@ -1,11 +1,12 @@
 const inRange = require('../../../utils/in-range');
 const optional = require('../../tools/optional');
 const percentage = require('../percentage');
+const number = require('../number');
 const angle = require('../angle');
 const alpha = require('./alpha');
 
 module.exports = stream => {
-    const h = percentage(stream) || angle(stream) || optional(stream, 'num');
+    const h = percentage(stream) || angle(stream) || number(stream);
 
     if (!h) {
         return null;
