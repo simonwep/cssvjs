@@ -6,7 +6,7 @@ describe('CSS Type: <integer>', () => {
     const invalidIntegers = ['+---12', '12.', '_5', '\\4E94', 'ten', '12.0'];
 
     for (const [str, res] of validIntegers) {
-        it(`Should parse ${str}`, () => {
+        it(`Should parse "${str}"`, () => {
             expect(parse(str)).to.deep.equal({
                 type: 'integer',
                 value: res

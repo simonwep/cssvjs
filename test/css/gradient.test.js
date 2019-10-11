@@ -1,10 +1,10 @@
-const {expect} = require('chai');
-const {parse} = require('../../src');
+const expectAll = require('../utils/expectAll');
 
 describe('CSS Type: <gradient>', () => {
 
-    it('Should parse "linear-gradient(to right, rgba(20, 3, 4, 0.4) 10% 20%, #3f87a6, #fff 3em)', () => {
-        expect(parse('linear-gradient(to right, rgba(20, 3, 4, 0.4) 10% 20%, #3f87a6, #fff 3em)')).to.deep.equal({
+    // Test valid values
+    expectAll([
+        ['linear-gradient(to right, rgba(20, 3, 4, 0.4) 10% 20%, #3f87a6, #fff 3em)', {
             type: 'linear-gradient',
             value: {
                 type: 'linear',
@@ -42,11 +42,9 @@ describe('CSS Type: <gradient>', () => {
                     }
                 ]
             }
-        });
-    });
+        }],
 
-    it('Should parse "radial-gradient(farthest-corner at 40px 40px, #f35 0%, #43e 100%)"', () => {
-        expect(parse('radial-gradient(farthest-corner at 40px 40px, #f35 0%, #43e 100%)')).to.deep.equal({
+        ['radial-gradient(farthest-corner at 40px 40px, #f35 0%, #43e 100%)', {
             type: 'radial-gradient',
             value: {
                 type: 'radial',
@@ -71,11 +69,9 @@ describe('CSS Type: <gradient>', () => {
                     }
                 ]
             }
-        });
-    });
+        }],
 
-    it('Should parse "conic-gradient(from 0.25turn at 50% 30%, #f69d3c, 10deg, #ebf8e1 10deg 20deg)"', () => {
-        expect(parse('conic-gradient(from 0.25turn at 50% 30%, #f69d3c, 10deg, #ebf8e1 10deg 20deg)')).to.deep.equal({
+        ['conic-gradient(from 0.25turn at 50% 30%, #f69d3c, 10deg, #ebf8e1 10deg 20deg)', {
             type: 'conic-gradient',
             value: {
                 type: 'conic',
@@ -114,6 +110,14 @@ describe('CSS Type: <gradient>', () => {
                     }
                 ]
             }
-        });
-    });
+        }]
+    ]);
+
+    // Test invalid values
+    expectAll([
+        'conic-gradient(from 0.25turn at 30deg 30%, #f69d3c, 10deg, #ebf8e1 10deg 20deg)',
+        'linear-gradient(to right)',
+        'linear-gradient(to right, rgba(20, 3, 4, 0.4) 10% 20% 20%)',
+        'radial-gradient(farthest-corner at 40px 40px, #f35)'
+    ]);
 });

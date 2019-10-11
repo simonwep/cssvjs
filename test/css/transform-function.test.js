@@ -2,7 +2,7 @@ const expectAll = require('../utils/expectAll');
 
 describe('CSS Type: <transform-function>', () => {
 
-    // Valid values
+    // Test valid values
     expectAll([
         ['rotateY(2deg)', {
             type: 'transform-function',
@@ -104,7 +104,7 @@ describe('CSS Type: <transform-function>', () => {
         }]
     ]);
 
-    // Invalid tests
+    // Test invalid values
     expectAll([
         'perspective(20deg)',
         'matrix3d(10, 20)',

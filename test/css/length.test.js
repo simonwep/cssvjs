@@ -10,7 +10,7 @@ describe('CSS Type: <length>', () => {
             .map(v => Math.random() > 0.5 ? v.toUpperCase() : v.toLowerCase())
             .join('');
 
-        it(`Should parse ${str}`, () => {
+        it(`Should parse "${str}"`, () => {
             expect(parse(str)).to.deep.equal({
                 type: 'length',
                 value: num,

@@ -1,10 +1,10 @@
-const {parse} = require('../../src');
-const {expect} = require('chai');
+const expectAll = require('../utils/expectAll');
 
 describe('CSS Type: <basic-shape>', () => {
 
-    it('Should parse "inset(22% 12% 15em 35mm)"', () => {
-        expect(parse('inset(22% 12% 15em 35mm)')).to.deep.equal({
+    // Test valid values
+    expectAll([
+        ['inset(22% 12% 15em 35mm)', {
             type: 'basic-shape',
             value: {
                 type: 'inset',
@@ -14,11 +14,9 @@ describe('CSS Type: <basic-shape>', () => {
                 left: {type: 'length', unit: 'mm', value: 35},
                 radius: null
             }
-        });
-    });
+        }],
 
-    it('Should parse "inset(5% 2% 0 7mm round 4em / 2em 9px 2px)"', () => {
-        expect(parse('inset(5% 2% 0 7mm round 4em / 2em 9px 2px)')).to.deep.equal({
+        ['inset(5% 2% 0 7mm round 4em / 2em 9px 2px)', {
             type: 'basic-shape',
             value: {
                 type: 'inset',
@@ -46,22 +44,18 @@ describe('CSS Type: <basic-shape>', () => {
                     ]
                 }
             }
-        });
-    });
+        }],
 
-    it('should parse "circle(6rem)"', () => {
-        expect(parse('circle(6rem)')).to.deep.equal({
+        ['circle(6rem)', {
             type: 'basic-shape',
             value: {
                 type: 'circle',
                 radius: {type: 'length', unit: 'rem', value: 6},
                 position: null
             }
-        });
-    });
+        }],
 
-    it('should parse "circle(6rem at 12rem 8rem)"', () => {
-        expect(parse('circle(6rem at 12rem 8rem)')).to.deep.equal({
+        ['circle(6rem at 12rem 8rem)', {
             type: 'basic-shape',
             value: {
                 type: 'circle',
@@ -74,11 +68,9 @@ describe('CSS Type: <basic-shape>', () => {
                     ]
                 }
             }
-        });
-    });
+        }],
 
-    it('Should parse "ellipse(2em 5vmin)"', () => {
-        expect(parse('ellipse(2em 5vmin)')).to.deep.equal({
+        ['ellipse(2em 5vmin)', {
             type: 'basic-shape',
             value: {
                 type: 'ellipse',
@@ -88,11 +80,9 @@ describe('CSS Type: <basic-shape>', () => {
                     {type: 'length', unit: 'vmin', value: 5}
                 ]
             }
-        });
-    });
+        }],
 
-    it('Should parse "ellipse(115px 55px at 50% 40%)"', () => {
-        expect(parse('ellipse(115px 55px at 50% 40%)')).to.deep.equal({
+        ['ellipse(115px 55px at 50% 40%)', {
             type: 'basic-shape',
             value: {
                 type: 'ellipse',
@@ -108,11 +98,9 @@ describe('CSS Type: <basic-shape>', () => {
                     ]
                 }
             }
-        });
-    });
+        }],
 
-    it('Should parse "polygon(2em 5em, 1em 3em)"', () => {
-        expect(parse('polygon(2em 5em, 1em 3em)')).to.deep.equal({
+        ['polygon(2em 5em, 1em 3em)', {
             type: 'basic-shape',
             value: {
                 type: 'polygon',
@@ -128,11 +116,9 @@ describe('CSS Type: <basic-shape>', () => {
                     ]
                 ]
             }
-        });
-    });
+        }],
 
-    it('Should parse "polygon(evenodd, 2px 3px, 3px 2px)"', () => {
-        expect(parse('polygon(evenodd, 2px 3px, 3px 2px)')).to.deep.equal({
+        ['polygon(evenodd, 2px 3px, 3px 2px)', {
             type: 'basic-shape',
             value: {
                 type: 'polygon',
@@ -148,28 +134,33 @@ describe('CSS Type: <basic-shape>', () => {
                     ]
                 ]
             }
-        });
-    });
+        }],
 
-    it('Should parse "path("M 55.003, 23.405 v14.488 L 65.260, 27.640 c0.000, -1.812")"', () => {
-        expect(parse('path("M 55.003, 23.405 v14.488 L 65.260, 27.640 c0.000, -1.812")')).to.deep.equal({
+        ['path("M 55.003, 23.405 v14.488 L 65.260, 27.640 c0.000, -1.812")', {
             type: 'basic-shape',
             value: {
                 type: 'path',
                 fillRule: null,
                 path: 'M 55.003, 23.405 v14.488 L 65.260, 27.640 c0.000, -1.812'
             }
-        });
-    });
+        }],
 
-    it('Should parse "path(evenodd, "M 55.003, 23.405 v14.488 L 65.260, 27.640 c0.000, -1.812")"', () => {
-        expect(parse('path(evenodd, "M 55.003, 23.405 v14.488 L 65.260, 27.640 c0.000, -1.812")')).to.deep.equal({
+        ['path(evenodd, "M 55.003, 23.405 v14.488 L 65.260, 27.640 c0.000, -1.812")', {
             type: 'basic-shape',
             value: {
                 type: 'path',
                 fillRule: 'evenodd',
                 path: 'M 55.003, 23.405 v14.488 L 65.260, 27.640 c0.000, -1.812'
             }
-        });
-    });
+        }]
+    ]);
+
+    // Test invalid values
+    expectAll([
+        'ellipse',
+        'path(10)',
+        'polygon(2px, 5px)',
+        'ellipse(115px 55px at 10deg 40%)',
+        'ellipse(3 3)'
+    ]);
 });

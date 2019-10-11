@@ -9,7 +9,7 @@ describe('CSS Type: <blend-mode>', () => {
 
     for (const mode of blendModes) {
 
-        it(`Should parse ${mode}`, () => {
+        it(`Should parse "${mode}"`, () => {
             expect(parse(mode)).to.deep.equal({
                 type: 'blend-mode',
                 value: mode

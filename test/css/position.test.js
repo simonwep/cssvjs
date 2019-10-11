@@ -1,29 +1,26 @@
-const {expect} = require('chai');
-const {parse} = require('../../src');
+const expectAll = require('../utils/expectAll');
 
 describe('CSS Type: <position>', () => {
 
-    it(`Should parse a single value: "bottom"`, () => {
-        expect(parse('bottom')).to.deep.equal({
+
+    // Test valid values
+    expectAll([
+        ['bottom', {
             type: 'position',
             value: [
                 {type: 'kw', value: 'bottom'}
             ]
-        });
-    });
+        }],
 
-    it('Should parse double values: "bottom left"', () => {
-        expect(parse('bottom left')).to.deep.equal({
+        ['bottom left', {
             type: 'position',
             value: [
                 {type: 'kw', value: 'bottom'},
                 {type: 'kw', value: 'left'}
             ]
-        });
-    });
+        }],
 
-    it('Should parse quadruple values: "bottom 10px left 20%"', () => {
-        expect(parse('bottom 10px left 20%')).to.deep.equal({
+        ['bottom 10px left 20%', {
             type: 'position',
             value: [
                 {type: 'kw', value: 'bottom'},
@@ -31,14 +28,13 @@ describe('CSS Type: <position>', () => {
                 {type: 'kw', value: 'left'},
                 {type: 'percentage', value: 20}
             ]
-        });
-    });
+        }]
+    ]);
 
-    it('Should return null on triple values: "top left 10px"', () => {
-        expect(parse('top left 10px')).to.equal(null);
-    });
-
-    it('Should return null on opposite: values "left right', () => {
-        expect(parse('left right')).to.equal(null);
-    });
+    // Test invalid values
+    expectAll([
+        'top left 10px',
+        'left right',
+        'bottom top'
+    ]);
 });
