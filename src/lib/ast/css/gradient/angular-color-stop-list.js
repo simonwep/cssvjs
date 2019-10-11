@@ -25,7 +25,7 @@ module.exports = stream => {
     }
 
     // At least two colors need to be specified
-    if (colors.length < 2){
+    if (colors.length < 2) {
         return null;
     }
 

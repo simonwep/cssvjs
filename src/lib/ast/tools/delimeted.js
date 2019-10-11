@@ -8,8 +8,8 @@ module.exports = (stream, parser, limit, fixed = false) => {
 
         if (!value) {
             break;
-        } else if (fixed && values.length + 1 > limit) {
-            return null;
+        } else if (values.length + 1 > limit) {
+            break;
         }
 
         values.push(value);

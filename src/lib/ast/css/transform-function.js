@@ -1,6 +1,5 @@
 const delimeted = require('../tools/delimeted');
-const optional = require('../tools/optional');
-const maybe = require('../tools/maybe');
+const fn = require('../tools/function');
 const number = require('./number');
 const length = require('./length');
 const angle = require('./angle');
@@ -10,17 +9,8 @@ const functions = [
     'scalex', 'scaley', 'scalez', 'skew', 'skewx', 'skewy', 'translate', 'translate3d', 'translatex', 'translatey', 'translatez'
 ];
 
-module.exports = maybe(stream => {
-    const fn = optional(stream, 'kw', ...functions);
-
-    // Function needs to be followed by a open bracket
-    if (!fn || !optional(stream, 'punc', '(')) {
-        return null;
-    }
-
-    // Parse function
-    let value = null;
-    switch (fn.value) {
+module.exports = fn('transform-function', functions, (stream, name) => {
+    switch (name) {
 
         // Single values
         case 'skewx':
@@ -29,79 +19,57 @@ module.exports = maybe(stream => {
         case 'rotatex':
         case 'rotatey':
         case 'rotatez': {
-            value = angle(stream);
-            break;
+            return angle(stream);
         }
 
         case 'scalex':
         case 'scaley':
         case 'scalez': {
-            value = number(stream);
-            break;
+            return number(stream);
         }
 
         case 'translatex':
         case 'translatey':
         case 'translatez': {
-            value = length(stream);
-            break;
+            return length(stream);
         }
 
         // Double values
         case 'translate': {
-            value = delimeted(stream, length, 2);
-            break;
+            return delimeted(stream, length, 2);
         }
 
         case 'scale': {
-            value = delimeted(stream, number, 2);
-            break;
+            return delimeted(stream, number, 2);
         }
 
         case 'skew': {
-            value = delimeted(stream, angle, 2);
-            break;
+            return delimeted(stream, angle, 2);
         }
 
         // Triple values
         case 'translate3d': {
-            value = delimeted(stream, length, 3);
-            break;
+            return delimeted(stream, length, 3);
         }
 
         case 'scale3d': {
-            value = delimeted(stream, number, 3);
-            break;
+            return delimeted(stream, number, 3);
         }
 
         case 'rotate3d': {
-            value = delimeted(stream, angle, 3);
-            break;
+            return delimeted(stream, angle, 3);
         }
 
         case 'perspective': {
-            value = length(stream);
-            break;
+            return length(stream);
         }
 
         case 'matrix': {
-            value = delimeted(stream, number, 6, true);
-            break;
+            return delimeted(stream, number, 6, true);
         }
 
         case 'matrix3d': {
-            value = delimeted(stream, number, 16, true);
-            break;
+            return delimeted(stream, number, 16, true);
         }
     }
-
-    if (!value || !optional(stream, 'punc', ')')) {
-        return null;
-    }
-
-    return {
-        type: 'transform-function',
-        function: fn.value,
-        value
-    };
 });
