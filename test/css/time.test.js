@@ -1,24 +1,43 @@
-const {expect} = require('chai');
-const {parse} = require('../../src');
+const expectAll = require('../utils/expectAll');
 
 describe('CSS Type: <time>', () => {
-    const units = ['s', 'ms'];
 
-    for (const unit of units) {
-        const num = Number((Math.random() * 1e5).toFixed(3));
-        const str = num + unit;
+    // Test valid values
+    expectAll([
+        ['60s', {
+            type: 'time',
+            unit: 's',
+            value: 60
+        }],
 
-        it(`Should parse "${str}"`, () => {
-            expect(parse(str)).to.deep.equal({
-                type: 'time',
-                value: num,
-                unit
-            });
-        });
-    }
+        ['-60s', {
+            type: 'time',
+            unit: 's',
+            value: -60
+        }],
 
-    it('Should return null on invalid units or numbers', () => {
-        expect(parse('1231ddd')).to.equal(null);
-        expect(parse('3232.232.dee')).to.equal(null);
-    });
+        ['150.25ms', {
+            type: 'time',
+            unit: 'ms',
+            value: 150.25
+        }],
+
+        ['0ms', {
+            type: 'time',
+            unit: 'ms',
+            value: 0
+        }],
+
+        ['0s', {
+            type: 'time',
+            unit: 's',
+            value: 0
+        }]
+    ]);
+
+    // Test invalid values
+    expectAll([
+        '2312ss',
+        '293.32.2ms'
+    ]);
 });
