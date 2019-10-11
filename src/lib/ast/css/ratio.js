@@ -2,14 +2,13 @@ const sequence = require('../tools/sequence');
 const maybe = require('../tools/maybe');
 
 module.exports = maybe(stream => {
-    const seq = sequence(stream, 'num', 'punc', 'num');
+    const seq = sequence(stream, 'num', ['punc', '/'], 'num');
 
     if (!seq) {
         return null;
     }
 
-    // TODO: Remove punctuation?
-    const [a, div, b] = seq;
+    const [a, , b] = seq;
     const av = a.value;
     const bv = b.value;
 
@@ -17,7 +16,8 @@ module.exports = maybe(stream => {
     if (!(av % 1) && !(bv % 1) && av > 0 && bv > 0) {
         return {
             type: 'ratio',
-            value: [a, div, b]
+            x: a.value,
+            y: b.value
         };
     }
 
