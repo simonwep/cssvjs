@@ -1,6 +1,7 @@
 const optional = require('../tools/optional');
+const maybe = require('../tools/maybe');
 
-module.exports = (stream, type, ...units) => {
+module.exports = maybe((stream, type, ...units) => {
     const num = optional(stream, 'num');
 
     if (num) {
@@ -16,4 +17,4 @@ module.exports = (stream, type, ...units) => {
     }
 
     return null;
-};
+});

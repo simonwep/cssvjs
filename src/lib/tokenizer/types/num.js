@@ -39,10 +39,9 @@ module.exports = stream => {
                 stream.pop();
                 return null;
             }
+
             number += ch;
             decimal = true;
-
-
         } else if (isNumeric(ch)) {
             numeric = true;
             number += ch;

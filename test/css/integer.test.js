@@ -2,7 +2,7 @@ const {expect} = require('chai');
 const {parse} = require('../../src');
 
 describe('CSS Type: <integer>', () => {
-    const validIntegers = [['-15', -15], ['+8', 8], ['+0', 0], ['-0', 0], ['+6', 6]];
+    const validIntegers = [['-15', -15], ['1e-5', 0.00001], ['1e5', 100000]];
     const invalidIntegers = ['+---12', '12.', '_5', '\\4E94', 'ten', '12.0'];
 
     for (const [str, res] of validIntegers) {

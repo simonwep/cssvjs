@@ -17,14 +17,14 @@ describe('CSS Type: <basic-shape>', () => {
         });
     });
 
-    it('Should parse "inset(5% 2% 1em 7mm round 4em / 2em 9px 2px)"', () => {
-        expect(parse('inset(5% 2% 1em 7mm round 4em / 2em 9px 2px)')).to.deep.equal({
+    it('Should parse "inset(5% 2% 0 7mm round 4em / 2em 9px 2px)"', () => {
+        expect(parse('inset(5% 2% 0 7mm round 4em / 2em 9px 2px)')).to.deep.equal({
             type: 'basic-shape',
             value: {
                 type: 'inset',
                 top: {type: 'percentage', value: 5},
                 right: {type: 'percentage', value: 2},
-                bottom: {type: 'length', unit: 'em', value: 1},
+                bottom: {type: 'length', unit: null, value: 0},
                 left: {type: 'length', unit: 'mm', value: 7},
                 radius: {
                     type: 'border-radius',
