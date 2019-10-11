@@ -43,8 +43,6 @@ module.exports = tokens => {
     const stream = createStream(tokens);
 
     for (const parser of types) {
-
-        // TODO: Case-insenstitiv?!
         stream.stash();
 
         const parsed = parser(stream);
