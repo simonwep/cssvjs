@@ -8,7 +8,7 @@ module.exports = stream => {
 
         return str ? {
             type: 'kw',
-            value: str
+            value: str.toLowerCase()
         } : null;
     }
 
