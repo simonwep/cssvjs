@@ -3,6 +3,7 @@ module.exports = fn => (stream, ...args) => {
 
     const result = fn(stream, ...args);
     if (result) {
+        stream.recycle();
         return result;
     }
 

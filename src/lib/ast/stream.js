@@ -6,6 +6,7 @@ module.exports = vals => {
     const stream = {
         stash: () => stashed.push(index),
         pop: () => index = stashed.pop(),
+        recycle: () => stashed.pop(),
 
         next(includeWhitespace = false) {
 
