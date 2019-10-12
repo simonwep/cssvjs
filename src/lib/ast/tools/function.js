@@ -1,20 +1,9 @@
 const optional = require('./optional');
+const match = require('./match');
 const maybe = require('./maybe');
 
 module.exports = (type, names, body) => maybe(stream => {
-
-    // Function-names can contain the "-" character
-    let name = '';
-    while (stream.hasNext()) {
-        const {type, value} = stream.peek();
-
-        if (type === 'kw' || value === '-') {
-            name += value;
-            stream.next();
-        } else {
-            break;
-        }
-    }
+    const name = match(stream, ...names);
 
     // Function needs to be followed by a open bracket
     if (!name || !optional(stream, 'punc', '(')) {

@@ -1,6 +1,7 @@
 const createStream = require('./stream');
 const transformFunction = require('./css/transform-function');
 const filterFunction = require('./css/filter-function');
+const timingFunction = require('./css/timing-function');
 const borderRadius = require('./css/border-radius');
 const basicShape = require('./css/basic-shape');
 const percentage = require('./css/percentage');
@@ -23,6 +24,7 @@ const url = require('./css/url');
 const types = [
     transformFunction,
     filterFunction,
+    timingFunction,
     shape,
     url,
     color,
