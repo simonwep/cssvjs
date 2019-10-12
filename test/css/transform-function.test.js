@@ -108,6 +108,7 @@ describe('CSS Type: <transform-function>', () => {
     expectAll([
         'perspective(20deg)',
         'matrix3d(10, 20)',
+        'matrix3d(10, 20, 3, 3)',
         'rotate(200deg, 20deg)',
         'translate3d(10em, 2em, 10deg)'
     ]);
