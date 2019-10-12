@@ -6,13 +6,14 @@ const basicShape = require('./css/basic-shape');
 const percentage = require('./css/percentage');
 const resolution = require('./css/resolution');
 const blendMode = require('./css/blend-mode');
+const flexValue = require('./css/flex-value');
 const position = require('./css/position');
 const gradient = require('./css/gradient');
 const integer = require('./css/integer');
-const flex = require('./css/flex-value');
 const number = require('./css/number');
 const length = require('./css/length');
 const string = require('./css/string');
+const shape = require('./css/shape');
 const angle = require('./css/angle');
 const ratio = require('./css/ratio');
 const color = require('./css/color');
@@ -22,6 +23,7 @@ const url = require('./css/url');
 const types = [
     transformFunction,
     filterFunction,
+    shape,
     url,
     color,
     string,
@@ -31,7 +33,7 @@ const types = [
     resolution,
     length,
     ratio,
-    flex,
+    flexValue,
     time,
     angle,
     position,
