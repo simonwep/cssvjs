@@ -30,6 +30,3 @@ module.exports = str => {
 
     return tokens;
 };
-
-
-

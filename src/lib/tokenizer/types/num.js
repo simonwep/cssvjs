@@ -77,7 +77,6 @@ module.exports = stream => {
     };
 };
 
-
 function parseScientificNotation(stream) {
     let prefixUsed = false;
     let numeric = false;

@@ -3,13 +3,8 @@ const maybe = require('../tools/maybe');
 
 module.exports = maybe(stream => {
     const seq = sequence(stream, 'num', ['punc', '%']);
-
-    if (!seq) {
-        return null;
-    }
-
-    return {
+    return seq ? {
         type: 'percentage',
         value: seq[0].value
-    };
+    } : seq;
 });

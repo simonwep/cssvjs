@@ -2,7 +2,6 @@ const expectAll = require('../utils/expectAll');
 
 describe('CSS Type: <position>', () => {
 
-
     // Test valid values
     expectAll([
         ['bottom', {

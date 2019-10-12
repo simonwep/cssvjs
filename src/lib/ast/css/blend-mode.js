@@ -1,5 +1,4 @@
-const sequence = require('../tools/sequence');
-const optional = require('../tools/optional');
+const match = require('../tools/match');
 const maybe = require('../tools/maybe');
 
 const blendModes = [
@@ -8,19 +7,10 @@ const blendModes = [
 ];
 
 module.exports = maybe(stream => {
-    const kw = optional(stream, 'kw');
-    const seq = sequence(stream, ['punc', '-'], 'kw');
+    const matched = match(stream, ...blendModes);
 
-    if (kw) {
-        const value = kw.value + (seq ? seq.map(v => v.value).join('') : '');
-
-        if (blendModes.includes(value)) {
-            return {
-                type: 'blend-mode',
-                value
-            };
-        }
-    }
-
-    return null;
+    return matched ? {
+        type: 'blend-mode',
+        value: matched
+    } : null;
 });

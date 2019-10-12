@@ -9,7 +9,6 @@ module.exports = maybe(stream => {
         'cap', 'ch', 'em', 'ex', 'ic', 'lh', 'rem', 'rlh', 'vh', 'vw', 'vi', 'vb', 'vmin', 'vmax', 'px', 'cm', 'mm', 'q', 'in', 'pc', 'pt', 'mozmm'
     );
 
-
     if (nu) {
         return nu;
     }
