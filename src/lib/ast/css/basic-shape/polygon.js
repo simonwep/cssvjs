@@ -5,7 +5,7 @@ const check = require('../../tools/check');
 module.exports = stream => {
     const fillRule = optional(stream, 'kw', 'nonzero', 'evenodd');
 
-    // fill-rule needs to be followed by a comma
+    // Fill-rule needs to be followed by a comma
     if (fillRule && !optional(stream, 'punc', ',')) {
         return null;
     }
