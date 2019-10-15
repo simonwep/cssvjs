@@ -3,6 +3,7 @@ const types = [
     require('./transform-function'),
     require('./filter-function'),
     require('./timing-function'),
+    require('./calc'),
     require('./basic-shape'),
     require('./blend-mode'),
     require('./flex-value'),

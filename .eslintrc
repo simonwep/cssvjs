@@ -24,7 +24,6 @@
         "no-trailing-spaces": "error",
         "no-delete-var": "error",
         "no-redeclare": "error",
-        "no-param-reassign": "warn",
         "no-multi-str": "error",
         "prefer-rest-params": "error",
         "prefer-const": "error",
