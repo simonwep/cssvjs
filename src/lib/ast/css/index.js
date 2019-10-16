@@ -10,6 +10,7 @@ const types = [
     require('./flex-value'),
     require('./string'),
     require('./shape'),
+    require('./inheritance-keyword'),
     require('./var'),
     require('./url'),
     require('./color'),
