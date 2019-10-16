@@ -18,16 +18,17 @@ module.exports = fn('element', ['element'], stream => {
     while (stream.hasNext(true)) {
         const {type, value} = stream.peek(true);
 
-        if (type === 'kw' || type === 'punc') {
-            if (value === ')') {
-                break;
-            } else {
-                next += value;
-                stream.next();
-            }
-        } else {
+        if (value === ')') {
+            break;
+        }
+
+        if (type === 'ws' ||
+            type === 'punc' && (value !== '_' && value !== '-')) {
             return null;
         }
+
+        next += value;
+        stream.next();
     }
 
     return next.length ? {

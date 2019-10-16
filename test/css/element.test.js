@@ -34,6 +34,7 @@ describe('CSS Type: <element>', () => {
         'element()',
         'element(#)',
         'element(#2abc)',
-        'element(#-bbb)'
+        'element(#-bbb)',
+        'element(#abc..)'
     ]);
 });
