@@ -1,6 +1,6 @@
 const expectAll = require('../utils/expectAll');
-const {expect} = require('chai');
 const {parse} = require('../../src');
+const {expect} = require('chai');
 
 describe('CSS Type: <timing-function>', () => {
 
