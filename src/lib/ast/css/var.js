@@ -1,3 +1,4 @@
+const identifier = require('../tools/identifier');
 const sequence = require('../tools/sequence');
 const optional = require('../tools/optional');
 const fn = require('../tools/function');
@@ -10,19 +11,8 @@ module.exports = fn('variable', ['var'], stream => {
     }
 
     // Parse variable name
-    let name = '';
-    while (stream.hasNext(true)) {
-        const {type, value} = stream.peek(true);
-
-        if (type === 'kw' || (type === 'punc' && value === '-')) {
-            name += value;
-            stream.next(true);
-        } else {
-            break;
-        }
-    }
-
-    if (!name.length) {
+    const name = identifier(stream);
+    if (!name) {
         return null;
     }
 
