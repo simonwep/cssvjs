@@ -3,6 +3,7 @@ const types = [
     require('./transform-function'),
     require('./filter-function'),
     require('./timing-function'),
+    require('./image-set'),
     require('./element'),
     require('./attr'),
     require('./env'),
