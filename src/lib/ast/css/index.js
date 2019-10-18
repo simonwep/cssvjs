@@ -4,6 +4,7 @@ const types = [
     require('./filter-function'),
     require('./timing-function'),
     require('./element'),
+    require('./attr'),
     require('./env'),
     require('./calc'),
     require('./basic-shape'),
