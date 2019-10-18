@@ -4,6 +4,7 @@ const types = [
     require('./filter-function'),
     require('./timing-function'),
     require('./image-set'),
+    require('./cross-fade'),
     require('./element'),
     require('./attr'),
     require('./env'),
