@@ -18,6 +18,7 @@ const types = [
     require('./color'),
     require('./percentage'),
     require('./resolution'),
+    require('./frequency'),
     require('./length'),
     require('./time'),
     require('./ratio'),

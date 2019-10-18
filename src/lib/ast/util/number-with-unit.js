@@ -5,6 +5,11 @@ module.exports = maybe((stream, type, ...units) => {
     const num = optional(stream, 'num');
 
     if (num) {
+        const peek = stream.peek(true);
+        if (!peek || peek.type === 'ws') {
+            return null;
+        }
+
         const unit = optional(stream, 'kw', ...units);
 
         if (unit) {
