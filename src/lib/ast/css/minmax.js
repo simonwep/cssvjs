@@ -1,10 +1,10 @@
 const delimeted = require('../tools/delimeted');
 const fn = require('../tools/function');
 const match = require('../tools/match');
-const or = require('../tools/or');
+const oneOf = require('../tools/one-of');
 
 module.exports = fn('minmax', ['minmax'], stream => {
-    return delimeted(stream, or(
+    return delimeted(stream, oneOf(
         require('./flex-value'),
         require('./percentage'),
         require('./length'),

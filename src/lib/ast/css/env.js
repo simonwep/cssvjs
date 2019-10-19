@@ -1,10 +1,10 @@
-const identifier = require('../tools/identifier');
 const optional = require('../tools/optional');
 const check = require('../tools/check');
 const fn = require('../tools/function');
+const customIdent = require('./custom-ident');
 
 module.exports = fn('environment-variable', ['env'], stream => {
-    const name = identifier(stream);
+    const name = customIdent(stream);
 
     if (!name) {
         return null;
@@ -26,5 +26,9 @@ module.exports = fn('environment-variable', ['env'], stream => {
         } while (!check(stream, 'punc', ')'));
     }
 
-    return {name, values};
+
+    return {
+        name: name.value,
+        values
+    };
 });

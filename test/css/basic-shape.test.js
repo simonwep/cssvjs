@@ -157,7 +157,6 @@ describe('CSS Type: <basic-shape>', () => {
 
     // Test invalid values
     expectAll([
-        'ellipse',
         'path(10)',
         'polygon(2px, 5px)',
         'ellipse(115px 55px at 10deg 40%)',

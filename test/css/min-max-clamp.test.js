@@ -55,7 +55,7 @@ describe('CSS Type: <min> / <max> / <clamp>', () => {
         'clamp(10px, 5em)',
         'clamp(20px, 10px, 10vw, 20vw)',
         'max()',
-        'min',
+        'min(',
         'min(#fff)'
     ]);
 });

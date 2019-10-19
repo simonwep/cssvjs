@@ -31,7 +31,8 @@ const types = [
     require('./position'),
     require('./border-radius'),
     require('./integer'),
-    require('./number')
+    require('./number'),
+    require('./custom-ident')
 ];
 
 /**

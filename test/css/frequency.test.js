@@ -13,6 +13,6 @@ describe('CSS Type: <frequency>', () => {
     // Test invalid values
     expectAll([
         '7 Hz',
-        'hz'
+        '.hz'
     ]);
 });
