@@ -29,7 +29,9 @@ describe('CSS Type: <symbols>', () => {
                         value: '/my-image.png'
                     },
                     {
-                        type: 'linear-gradient',
+                        type: 'gradient',
+                        variant: 'linear',
+                        repeating: false,
                         value: {
                             type: 'linear',
                             modifier: {

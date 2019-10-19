@@ -51,7 +51,9 @@ describe('CSS Type: <env>', () => {
                 name: 'another-modifier_',
                 values: [
                     {
-                        type: 'linear-gradient',
+                        type: 'gradient',
+                        variant: 'linear',
+                        repeating: false,
                         value: {
                             type: 'linear',
                             modifier: {

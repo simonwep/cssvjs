@@ -9,8 +9,8 @@ const parser = {
 };
 
 module.exports = maybe(stream => {
-    const rep = optional(stream, 'kw', 'repeating');
-    if (rep && !optional(stream, 'punc', '-')) {
+    const repeating = !!optional(stream, 'kw', 'repeating');
+    if (repeating && !optional(stream, 'punc', '-')) {
         return null;
     }
 
@@ -26,17 +26,19 @@ module.exports = maybe(stream => {
         return null;
     }
 
-    const type = seq[0].value;
+    const variant = seq[0].value;
 
-    if (type in parser) {
-        const value = parser[type](stream);
+    if (variant in parser) {
+        const value = parser[variant](stream);
 
         if (!value || !optional(stream, 'punc', ')')) {
             return null;
         }
 
         return {
-            type: `${(rep && `${rep.value}-` || '') + type}-gradient`,
+            type: 'gradient',
+            repeating,
+            variant,
             value
         };
     }

@@ -11,7 +11,9 @@ describe('CSS Type: <var>', () => {
             value: {
                 name: '--vn43_-_sadf-gsd',
                 fallback: {
-                    type: 'linear-gradient',
+                    type: 'gradient',
+                    variant: 'linear',
+                    repeating: false,
                     value: {
                         type: 'linear',
                         modifier: {

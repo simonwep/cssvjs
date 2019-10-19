@@ -4,8 +4,10 @@ describe('CSS Type: <gradient>', () => {
 
     // Test valid values
     expectAll([
-        ['linear-gradient(to right, rgba(20, 3, 4, 0.4) 10% 20%, #3f87a6, #fff 3em)', {
-            type: 'linear-gradient',
+        ['repeating-linear-gradient(to right, rgba(20, 3, 4, 0.4) 10% 20%, #3f87a6, #fff 3em)', {
+            type: 'gradient',
+            repeating: true,
+            variant: 'linear',
             value: {
                 type: 'linear',
                 modifier: {
@@ -45,7 +47,9 @@ describe('CSS Type: <gradient>', () => {
         }],
 
         ['radial-gradient(farthest-corner at 40px 40px, #f35 0%, #43e 100%)', {
-            type: 'radial-gradient',
+            type: 'gradient',
+            repeating: false,
+            variant: 'radial',
             value: {
                 type: 'radial',
                 modifier: 'farthest-corner',
@@ -72,7 +76,9 @@ describe('CSS Type: <gradient>', () => {
         }],
 
         ['conic-gradient(from 0.25turn at 50% 30%, #f69d3c, 10deg, #ebf8e1 10deg 20deg)', {
-            type: 'conic-gradient',
+            type: 'gradient',
+            repeating: false,
+            variant: 'conic',
             value: {
                 type: 'conic',
                 angle: {
