@@ -11,11 +11,9 @@ module.exports = (stream, parser, limit = null, fixed = false) => {
         }
 
         values.push(value);
-    } while (
+
         /* eslint-disable no-unmodified-loop-condition */
-        (limit === null || values.length < limit) &&
-        optional(stream, 'punc', ',')
-    );
+    } while ((limit === null || values.length < limit) && optional(stream, 'punc', ','));
 
     if (limit !== null && fixed && values.length !== limit) {
         return null;

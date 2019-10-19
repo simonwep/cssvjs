@@ -2,6 +2,7 @@ const types = [
     require('./gradient'),
     require('./transform-function'),
     require('./min-max-clamp'),
+    require('./symbols'),
     require('./filter-function'),
     require('./timing-function'),
     require('./image-set'),
