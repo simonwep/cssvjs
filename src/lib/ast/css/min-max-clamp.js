@@ -1,6 +1,6 @@
 const delimeted = require('../tools/delimeted');
-const or = require('../tools/or');
 const fn = require('../tools/function');
+const or = require('../tools/or');
 
 module.exports = fn('min-max-clamp', ['min', 'max', 'clamp'], (stream, name) => {
     let parameters = null;
