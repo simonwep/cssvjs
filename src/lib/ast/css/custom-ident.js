@@ -8,7 +8,12 @@ module.exports = maybe(stream => {
         const {type, value} = stream.peek(true);
 
         if (type === 'ws') {
-            break;
+            if (ident.length) {
+                break;
+            } else {
+                stream.next(true);
+                continue;
+            }
         } else if (type === 'num' && (!ident.length || ident === '-')) {
             return null;
         } else if (type === 'punc') {

@@ -60,7 +60,7 @@ describe('CSS Type: <var>', () => {
     // Test invalid values
     expectAll([
         'var(--a-co lor, red)',
-        'var(--name, re)',
+        'var(--name, reeeee,red)',
         'var(--name red)',
         'var(--name, red',
         'var(--)',
