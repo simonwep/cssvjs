@@ -1,4 +1,4 @@
-const expectAll = require('../utils/expectAll');
+const expectAll = require('../utils/expect-all');
 
 describe('CSS Type: <frequency>', () => {
 

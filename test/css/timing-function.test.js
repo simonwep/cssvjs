@@ -1,4 +1,4 @@
-const expectAll = require('../utils/expectAll');
+const expectAll = require('../utils/expect-all');
 const {parse} = require('../../src');
 const {expect} = require('chai');
 
