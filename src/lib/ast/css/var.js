@@ -18,7 +18,7 @@ module.exports = fn('variable', ['var'], stream => {
 
     let fallback = null;
     if (optional(stream, 'punc', ',')) {
-        fallback = require('./')(stream);
+        fallback = require('../').find(stream, true);
 
         if (!fallback) {
             return null;

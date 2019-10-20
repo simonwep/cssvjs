@@ -51,12 +51,17 @@ Include directly via jsdelivr:
 ## Usage
 ```js 
 import {parse} from 'cssvjs';
+
+// Return first matching type
 // const {parse} = require('cssvjs'); // Without es6 import
 // const {parse} = CSSvJS; // In a browser env
 console.log(parse(`rgba(40 54 22 / 23%)`));
+
+// Targed a specific type
+console.log(parse('linear-gradient(to right, red, blue)', 'gradient');
 ```
 
-which will print the following to the console:
+Result of `parse(`rgba(40 54 22 / 23%)`)`:
 ```js
 {
   type: 'color',

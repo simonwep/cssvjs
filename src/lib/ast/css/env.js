@@ -12,10 +12,10 @@ module.exports = fn('environment-variable', ['env'], stream => {
 
     const values = [];
     if (optional(stream, 'punc', ',')) {
-        const css = require('./');
+        const css = require('../');
 
         do {
-            const value = css(stream, true);
+            const value = css.find(stream, true);
 
             if (!value) {
                 return null;

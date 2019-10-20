@@ -1,61 +1,38 @@
-const types = [
-    require('./gradient'),
-    require('./transform-function'),
-    require('./min-max-clamp'),
-    require('./counters'),
-    require('./symbols'),
-    require('./filter-function'),
-    require('./timing-function'),
-    require('./image-set'),
-    require('./cross-fade'),
-    require('./element'),
-    require('./attr'),
-    require('./env'),
-    require('./calc'),
-    require('./basic-shape'),
-    require('./blend-mode'),
-    require('./flex-value'),
-    require('./string'),
-    require('./shape'),
-    require('./repeat-style'),
-    require('./inheritance-keyword'),
-    require('./var'),
-    require('./url'),
-    require('./color'),
-    require('./percentage'),
-    require('./resolution'),
-    require('./frequency'),
-    require('./minmax'),
-    require('./length'),
-    require('./time'),
-    require('./ratio'),
-    require('./angle'),
-    require('./position'),
-    require('./border-radius'),
-    require('./integer'),
-    require('./number'),
-    require('./custom-ident')
+module.exports = [
+    {type: 'gradient', parse: require('./gradient')},
+    {type: 'transform-function', parse: require('./transform-function')},
+    {type: 'min-max-clamp', parse: require('./min-max-clamp')},
+    {type: 'counters', parse: require('./counters')},
+    {type: 'symbols', parse: require('./symbols')},
+    {type: 'filter-function', parse: require('./filter-function')},
+    {type: 'timing-function', parse: require('./timing-function')},
+    {type: 'image-set', parse: require('./image-set')},
+    {type: 'cross-fade', parse: require('./cross-fade')},
+    {type: 'element', parse: require('./element')},
+    {type: 'attr', parse: require('./attr')},
+    {type: 'env', parse: require('./env')},
+    {type: 'calc', parse: require('./calc')},
+    {type: 'basic-shape', parse: require('./basic-shape')},
+    {type: 'blend-mode', parse: require('./blend-mode')},
+    {type: 'flex-value', parse: require('./flex-value')},
+    {type: 'string', parse: require('./string')},
+    {type: 'shape', parse: require('./shape')},
+    {type: 'repeat-style', parse: require('./repeat-style')},
+    {type: 'inheritance-keyword', parse: require('./inheritance-keyword')},
+    {type: 'var', parse: require('./var')},
+    {type: 'url', parse: require('./url')},
+    {type: 'color', parse: require('./color')},
+    {type: 'percentage', parse: require('./percentage')},
+    {type: 'resolution', parse: require('./resolution')},
+    {type: 'frequency', parse: require('./frequency')},
+    {type: 'minmax', parse: require('./minmax')},
+    {type: 'length', parse: require('./length')},
+    {type: 'time', parse: require('./time')},
+    {type: 'ratio', parse: require('./ratio')},
+    {type: 'angle', parse: require('./angle')},
+    {type: 'position', parse: require('./position')},
+    {type: 'border-radius', parse: require('./border-radius')},
+    {type: 'integer', parse: require('./integer')},
+    {type: 'number', parse: require('./number')},
+    {type: 'custom-ident', parse: require('./custom-ident')}
 ];
-
-/**
- * @param stream Token-stream
- * @param returnOnFirstMatch If true the
- * @returns {null|*}
- */
-module.exports = (stream, returnOnFirstMatch = true) => {
-    for (const parser of types) {
-        stream.stash();
-
-        const parsed = parser(stream);
-        if (parsed && (returnOnFirstMatch || !stream.hasNext())) {
-            stream.recycle();
-            return parsed;
-        }
-
-        stream.pop();
-    }
-
-    return null;
-};
-
-
